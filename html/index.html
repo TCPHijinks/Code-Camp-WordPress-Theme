@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coding on Country</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../css/lightbox.min.css">
+  <script src="../js/lightbox-plus-jquery.min.js"></script>
+  <script defer src="../js/modal.js"></script>
+</head>
+<body>
+  <section>
+
+    <!-- Navigation bar-->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#news">Recent Camps</a>
+        <a href="#contact">Challenges</a>
+    </div>   
+    
+    <div class="hero-image">       
+        <div class="heroContent">            
+            <h1>Coding on Country</h1>
+            <p>Bringing community, country and coding together.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>            
+    </div>
+              
+    <!-- Past camps -->
+    <div class="container">
+      <header>
+        <div class="sectionHeading"></div>
+            <h1>Recent Camps</h1>
+            <a href="#" class="btn">View All</a>
+        </div>       
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laborum, officia delectus corrupti modi natus?</p>
+      </header>
+
+      <main>
+        <div class="singleBlog">
+          <img src="../imgs/thum1.jpg" alt="">
+          <div class="campContent">
+            <h3>A Chair of Million <span>Art</span></h3>
+            <p>By <a href="#">Jhon Doe</a> | <a href="#">Nov 21, 2018</a></p>
+            <a href="#" class="btn" data-modal-target="#modal">Read More</a>
+          </div>
+        </div>
+        <div class="singleBlog">
+          <img src="../imgs/thum2.jpg" alt="">
+          <div class="campContent">
+            <h3>A Chair of Million <span>Photography</span></h3>
+            <p>By <a href="#">Jhon Doe</a> | <a href="#">Nov 21, 2018</a></p>
+            <a href="#" class="btn">Read More</a>
+          </div>
+        </div>
+        <div class="singleBlog">
+          <img src="../imgs/thum3.jpg" alt="">
+          <div class="campContent">
+            <h3>A Chair of Million <span>Design</span></h3>
+            <p>By <a href="#">Jhon Doe</a> | <a href="#">Nov 21, 2018</a></p>
+            <a href="#" class="btn">Read More</a>
+          </div>
+        </div>
+        <div class="singleBlog">
+          <img src="../imgs/thum4.jpg" alt="">
+          <div class="campContent">
+            <h3>A Chair of Million <span>Life</span></h3>
+            <p>By <a href="#">Jhon Doe</a> | <a href="#">Nov 21, 2018</a></p>
+            <a href="#" class="btn" >Read More</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- Camp pop-up modal -->
+  <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="title">An Epic Camp!</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati expedita, eveniet nisi accusantium, impedit possimus ipsum earum magni cupiditate architecto neque officia temporibus! Quidem inventore ex mollitia dolor quod nostrum similique amet est minus. Hic suscipit doloribus aut, sint earum iure, ad assumenda libero excepturi officia dolorum magni culpa eos.</p>
+       <div class="gallery">       
+              <a href="../imgs/dog1.jpg" data-lightbox="mygallery" data-title="White dog 20/-1/1998"> <img src="../imgs/dog1_small.jpg"></a>
+              <a href="../imgs/dog2.jpg" data-lightbox="mygallery" data-title="Cute puppy 01/01/1978"> <img src="../imgs/dog2_small.jpg"></a>
+              <a href="../imgs/cat1.jpg" data-lightbox="mygallery" data-title="Kitty brown 08/9/1999"> <img src="../imgs/cat1_small.jpg"></a>
+              <a href="../imgs/cat2.jpg" data-lightbox="mygallery" data-title="Black cat 05/05/1998"> <img src="../imgs/cat2_small.jpg"></a>
+              <a href="../imgs/dog1.jpg" data-lightbox="mygallery" data-title="White dog 20/-1/1998"> <img src="../imgs/dog1_small.jpg"></a>
+              <a href="../imgs/dog2.jpg" data-lightbox="mygallery" data-title="Cute puppy 01/01/1978"> <img src="../imgs/dog2_small.jpg"></a>
+          </div>
+      </div>
+    </div>
+    <div id="overlay"></div>
+</body>
+</html>
