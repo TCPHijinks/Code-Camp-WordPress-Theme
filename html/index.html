@@ -10,9 +10,10 @@
   <link rel="stylesheet" href="../css/lightbox.min.css">
   <script src="../js/lightbox-plus-jquery.min.js"></script>
   <script defer src="../js/modal.js"></script>
+  <script src="../js/gallery.js"></script>
 </head >
-<body id="home">
-  <section >
+<body>
+
 
     <!-- Navigation bar-->
     <div class="navbar">
@@ -20,34 +21,33 @@
         <a href="#camps">Recent Camps</a>
         <a href="#challenges">Challenges</a>
     </div>   
-   
-        <div class="hero-image">       
-            <div class="heroContent">            
-                <h1>Coding on Country</h1>
-                <p>Bringing community, country and coding together.</p>
-                <a href="#" class="btn">Read More</a>
-            </div>            
 
-            
-      </div>
-      <div id="home-info">
-          
-          <iframe id="home-video" src="https://www.youtube.com/embed/8ukWYBMH-zI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Home / Main -->
+    <div class="hero-image" id="home">       
+        <div class="heroContent">            
+            <h1>Coding on Country</h1>
+            <p>Bringing community, country and coding together.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>            
+    </div>
+
+    <!-- Idk where this will go yet -->
+    <div id="home-info">
         
-          <div id="home-video-info">
-              <h2>Video About Us! (placeholder)</h2>
-              <p>RANDOM PLACEHOLDER Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dolor alias reprehenderit, ad, voluptatibus praesentium laudantium architecto mollitia tempora minus nihil perferendis harum doloribus labore.</p>
-            </div>
-      </div>
+        <iframe id="home-video" src="https://www.youtube.com/embed/8ukWYBMH-zI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       
-     
+        <div id="home-video-info">
+            <h2>Video About Us! (placeholder)</h2>
+            <p>RANDOM PLACEHOLDER Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dolor alias reprehenderit, ad, voluptatibus praesentium laudantium architecto mollitia tempora minus nihil perferendis harum doloribus labore.</p>
+          </div>
+    </div>
+  
+    <a href="#campGallery" class="btn" onclick="selectGallery()">Read More</a>
               
     <!-- Past camps -->
     <div class="container" id="camps">
       <header>
-        <div class="sectionHeading">
-        <h2>Recent Camps</h2>   
-        </div>       
+        <h2>Recent Camps</h2>         
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laborum, officia delectus corrupti modi natus?</p>
       </header>
       
@@ -58,7 +58,7 @@
           <div class="campContent">
             <h3>First Code Camp!<span>Wujal Wujal</span></h3>
             <p>Jan 12, <a href="#">2018</a></p>
-            <a class="btn" data-modal-target="#modal">Read More</a>
+            <a href="#campGallery" class="btn" onclick="selectGallery()">Read More</a>
           </div>
         </div>
 
@@ -94,7 +94,15 @@
       <a href="#" class="btnViewAll">View All</a>
       
     </div><!-- End Container -->
-  </section>
+
+    <dif class="container" id="campGallery">
+      <h2>Name of Code Camp</h2>
+      <p> Some Sample text. </p>
+      <a href="#camps" class="btnViewAll" id="backButton" onclick="revertGallery()">Back</a>
+
+    </dif>
+
+  
 
   <!-- Camp pop-up modal -->
   <div class="modal" id="modal">
@@ -135,5 +143,8 @@
       <p> Some more information </br> to do with help </br> or contact </br> or website developers... </p>
     </div>  
   </footer>
+
+
+  
 </body>
 </html>

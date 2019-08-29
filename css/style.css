@@ -286,7 +286,9 @@ footer {
   margin-right: 30px;
 }
 
-
+#campGallery {
+  display: none;
+}
 
 
 
