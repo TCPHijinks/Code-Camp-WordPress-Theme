@@ -117,11 +117,7 @@ section{
   font-weight: 400;
   margin: 40px 0;
 }
-.container .btn , .btnViewAll {
-  font-size: 25px;
-  font-weight: 400;
-  padding: 7 12;
-}
+
 
 .btnViewAll {
   display: inline-block;
@@ -129,16 +125,13 @@ section{
   padding: 5px 10px;
   border: 1px solid;
   border-radius: 3px;
-  
-}
-
-.container .btn , .btnViewAll {
   font-size: 20px;
   font-weight: 200;
   width: 17em;
   color:var(--sub-colour-dark);  
   border-color: var(--sub-colour-dark);
 }
+
 
 body{
   margin: 0;
@@ -274,6 +267,7 @@ footer {
   background: var(--btn-hover-colour);
   transition: all .5s;
   text-decoration: none;
+  cursor: pointer;
 }
 .campContent a:hover{
   text-decoration: underline;
