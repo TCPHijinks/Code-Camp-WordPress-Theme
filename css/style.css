@@ -68,9 +68,9 @@ section{
 }
 #home-info{
   display: inline-block;
-  margin-bottom: 40em;
+  margin-bottom: 50px;
   width: 70%;
-  height: 10em;
+  height: auto;
   text-anchor: center;
 }
 #home-video {
@@ -152,8 +152,8 @@ img{
 }
 
 .container{
-  max-width: 1200px;
-  width: 100%;
+  /*max-width: 1200px;*/
+  width: 100vw;
   padding-top: 45px;
   margin: 0 auto;
 }
@@ -288,6 +288,27 @@ footer {
 
 #campGallery {
   display: none;
+}
+
+#gallery {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.staticGallery img {
+  transition: 1s;
+  padding: 0;
+  margin: 0;
+  width: 25vw;
+}
+
+.staticGallery img:hover {
+  filter: grayscale(30%);
+  transform: scale(1.1);
 }
 
 

@@ -42,13 +42,13 @@
           </div>
     </div>
   
-    <a href="#campGallery" class="btn" onclick="selectGallery()">Read More</a>
+
               
     <!-- Past camps -->
     <div class="container" id="camps">
       <header>
         <h2>Recent Camps</h2>         
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laborum, officia delectus corrupti modi natus?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laborum, officia delectus corrupti modi natus?</br> </br></p>
       </header>
       
       <!-- Section for Gallery List / Recent Events List-->
@@ -67,7 +67,7 @@
           <div class="campContent">
             <h3>Second Camp!<span>Wujal Wujal</span></h3>
             <p>Nov 21, <a href="#">2018</a></p>
-            <a class="btn" data-modal-target="#modal">Read More</a>
+            <a href="#campGallery" class="btn" onclick="selectGallery()">Read More</a>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
           <div class="campContent">
             <h3>Great Time Camp!<span>Alawa</span></h3>
             <p>Feb 14, <a href="#">2019</a></p>
-            <a class="btn" data-modal-target="#modal">Read More</a>
+            <a href="#campGallery" class="btn" onclick="selectGallery()">Read More</a>
           </div>
         </div>
 
@@ -85,22 +85,36 @@
           <div class="campContent">
             <h3>Another Camp!<span>Wujal Wujal</span></h3>
             <p>Sep 2, <a href="#">2019</a></p>
-            <a class="btn" data-modal-target="#modal">Read More</a>
+            <a href="#campGallery" class="btn" onclick="selectGallery()">Read More</a>
           </div>
         </div>
 
       </main>
 
-      <a href="#" class="btnViewAll">View All</a>
+      <a href="#camps" class="btnViewAll">View All</a>
       
-    </div><!-- End Container -->
+    </div><!-- End container - camps -->
 
-    <dif class="container" id="campGallery">
+    <div class="container" id="campGallery">
       <h2>Name of Code Camp</h2>
-      <p> Some Sample text. </p>
+      <p> Some Sample text. </br> </br> </p>
+      <div class="staticGallery" id="gallery">  
+          <a href="../imgs/dog1.jpg" data-lightbox="mygallery" data-title="White dog 20/-1/1998"> <img src="../imgs/dog1_small.jpg"></a>
+          <a href="../imgs/dog2.jpg" data-lightbox="mygallery" data-title="Cute puppy 01/01/1978"> <img src="../imgs/dog2_small.jpg"></a>
+          <a href="../imgs/dog1.jpg" data-lightbox="mygallery" data-title="White dog 20/-1/1998"> <img src="../imgs/dog1_small.jpg"></a>
+          <a href="../imgs/dog2.jpg" data-lightbox="mygallery" data-title="Cute puppy 01/01/1978"> <img src="../imgs/dog2_small.jpg"></a>
+          <a href="../imgs/dog1.jpg" data-lightbox="mygallery" data-title="White dog 20/-1/1998"> <img src="../imgs/dog1_small.jpg"></a>         
+          <a href="../imgs/cat2.jpg" data-lightbox="mygallery" data-title="Black cat 05/05/1998"> <img src="../imgs/cat2_small.jpg"></a>
+          <a href="../imgs/dog1.jpg" data-lightbox="mygallery" data-title="White dog 20/-1/1998"> <img src="../imgs/dog1_small.jpg"></a>
+          <a href="../imgs/dog2.jpg" data-lightbox="mygallery" data-title="Cute puppy 01/01/1978"> <img src="../imgs/dog2_small.jpg"></a>
+        </div>
+
       <a href="#camps" class="btnViewAll" id="backButton" onclick="revertGallery()">Back</a>
 
-    </dif>
+      
+      
+
+    </div><!-- End container - campGallery -->
 
   
 
