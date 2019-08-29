@@ -25,6 +25,30 @@
   text-align: center;
 }
 
+.warning {
+  margin-top: 47px;
+  padding: 5px 0;
+  position: fixed;
+  z-index:999;
+  width: 100vw;
+  background: linear-gradient(45deg, var(--blog-colour-start) 0%,var(--blog-colour-end) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.warning p {
+  color: var(--main-colour-light);
+  font-size: 10pt;
+  margin-left: 10px;
+}
+
+.warning a {
+  padding: 3px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
 /* Links inside the navbar */
 .navbar a {
   float: left;
@@ -139,6 +163,8 @@ body{
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   margin: 0;
+  width: 100vw;
+  overflow-x: hidden;
 }
 a{
   transition: all .5s;
