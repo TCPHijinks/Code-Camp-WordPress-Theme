@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-colour-light: #f2f2f2;
+  --main-colour-dark:  #333;
+  --sub-colour-dark:  rgba(156, 56, 23,1.0);
+  --btn-hover-colour:  rgba(156, 56, 23, 0.3);
+  --blog-colour-start:  rgb(173, 116, 59);
+  --blog-colour-end: rgba(242, 217, 104, 0.5);
+  --light-accent: rgb(227, 196, 150);
+}
 /* The navigation bar */
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--main-colour-dark);
   position: fixed; /* Set the navbar to fixed position */
   z-index: 999;
   top: 0; /* Position the navbar at the top of the page */
@@ -15,7 +29,7 @@
 .navbar a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: var(--light-accent);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -23,8 +37,8 @@
 
 /* Change background on mouse-over */
 .navbar a:hover {
-  background: #ddd;
-  color: black;
+  background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)100%);  /*#ddd;*/
+  color: var(--main-colour-light);
 }
 
 
@@ -91,11 +105,11 @@ section{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: var(--main-colour-light);
 }
 
 .heroContent h1{
-  color: white;
+  color: var(--main-colour-light);
   font-size: 50pt;
 }
 .heroContent p{
@@ -118,12 +132,12 @@ section{
   
 }
 
-.container .btn {
+.container .btn , .btnViewAll {
   font-size: 20px;
   font-weight: 200;
   width: 17em;
-  color: rgba(52, 73, 94,1.0);  
-  border-color: rgba(52, 73, 94,1.0);
+  color:var(--sub-colour-dark);  
+  border-color: var(--sub-colour-dark);
 }
 
 body{
@@ -131,16 +145,16 @@ body{
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  margin: 70px 15px 0px 15px;
+  margin: 0;
 }
 a{
   transition: all .5s;
   text-decoration: none;
-  color: #fff;
+  color: var(--main-colour-light);
 
 }
 img{
-  width: 100%;
+  height: 100%;
   transition: all .5s;
 }
 
@@ -168,7 +182,7 @@ header{
 h1, h2{
   margin: 0;
   font-size: 50pt;
-  color: rgba(52, 73, 94,1.0);
+  color: var(--sub-colour-dark);
   font-weight: 500;
 }
 h2 {
@@ -182,16 +196,18 @@ footer {
   padding: 50px 0;
   height: 100%;
 
-  background-color: #333;  
+  color: var(--main-colour-light);
+  background-color: var(--main-colour-dark);  
 }
 .singleBlog{
   position: relative;
   overflow: hidden;
-  max-height: 580px;
+  max-height: 50vh;
   height: 100%;
   box-sizing: border-box;
   box-shadow: 0 2px 10px #ccc;
   transition: all .5s;
+  background: url("../imgs/email-pattern.png") repeat;
 }
 .singleBlog:hover{
   box-shadow: 0 2px 13px #ccc;
@@ -206,9 +222,9 @@ footer {
   left: 0;
   bottom: -45px;
   width: 100%;
-  color: #fff;
+  color: var(--main-colour-light);
   padding: 10px 5px;
-  background: linear-gradient(45deg, rgb(173, 83, 22) 0%,rgba(5, 4, 4, 0.4) 100%);
+  background: linear-gradient(45deg, var(--blog-colour-start) 0%,var(--blog-colour-end) 100%);
   transition: all .5s;
 }
 .singleBlog:hover .campContent{
@@ -228,22 +244,27 @@ footer {
   font-weight: 600;
   font-weight: 300;
   font-style: italic;
-  color: rgb(248, 248, 248)
+  color:var(--main-colour-light);
 }
 
 .campContent a{
   font-size: 14px;
   font-weight: 500;
 }
+
+.campContent p {
+  margin-bottom: 10px;
+}
+
 .btn{
   display: inline-block;
   padding: 5px 10px;
-  border: 1px solid #fff;
+  border: 1px solid var(--main-colour-light);
   border-radius: 3px;
   font-weight: 400;
 }
 .btn:hover , .btnViewAll:hover {
-  background: rgba(52, 152, 219,1.0);
+  background: var(--btn-hover-colour);
   transition: all .5s;
   text-decoration: none;
 }
@@ -288,6 +309,10 @@ footer {
 
     main{
       grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .singleBlog {
+      max-height: 80vh;
     }
 }
 
