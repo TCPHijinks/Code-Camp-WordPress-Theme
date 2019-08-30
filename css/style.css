@@ -26,6 +26,8 @@
 }
 
 .warning {
+  transition: opacity 125ms linear;
+  opacity: 1;
   margin-top: 47px;
   padding: 5px 0;
   position: fixed;
@@ -51,6 +53,7 @@
 
 /* Links inside the navbar */
 .navbar a {
+  background: inherit;
   float: left;
   display: block;
   color: var(--light-accent);
@@ -59,8 +62,15 @@
   text-decoration: none;
 }
 
+@keyframes background_animation
+{
+  0%{background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)0%);}
+  100%{background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)100%);}
+}
+
 /* Change background on mouse-over */
 .navbar a:hover {
+  animation: background_aniatmion 125ms linear;
   background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)100%);  /*#ddd;*/
   color: var(--main-colour-light);
 }
