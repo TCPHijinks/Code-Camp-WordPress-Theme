@@ -28,18 +28,6 @@ body {
   overflow-x: hidden;
 }
 
-main {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
- 
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: 90%;
-}
-
 header {
   width: 70%;
   margin: 0 auto;
@@ -176,7 +164,9 @@ footer {
   cursor: pointer;
 }
 
-
+.warning_close {
+  color: white;
+}
 
 
 
@@ -225,34 +215,45 @@ footer {
 /* Home About Section /////////////////////////////////////////////////////////////////////////////*/
 
 #home-info{
-  display: inline-block;
-  margin-bottom: 50px;
-  width: 70%;
-  height: auto;
+  display: flex;
+  width: 100%;
+  height: 100vh;
   text-anchor: center;
+  flex-wrap: wrap;
 }
+
 #home-video {
-  max-width: 40em;
   width: 45%;
-  height: 15em;
- 
+  height: 45%;
   margin: 0;
-  float: left;
+  margin-left: 5%;
 }
 
 #home-video-info{
   width: 30%;
   text-align: left;
   margin: 0;
-  margin-top: -1em;
-  padding-left: -150em;
-  float:  right;
+  margin-left: 10%;
+
+
 }
 
 
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* Camp Blogs /////////////////////////////////////////////////////////////////////////////////////*/
+
+#blogContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+ 
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 90%;
+}
 
 .singleBlog{
   position: relative;
@@ -404,30 +405,38 @@ footer {
 /* Media Queries //////////////////////////////////////////////////////////////////////////////////*/
 
 @media (max-width:992px) {
-  main{
+  #blogContainer {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
   }
 }
 
 @media (max-width:767px) {
-  main{
+  #blogContainer {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px;
   }
 
-  header{
+  header {
     width: 95%;
   }
 
-  .campContent{
+  .campContent {
     bottom: 0;
+  }
+
+  #home-video {
+    width: 87%;
+  }
+
+  #home-video-info {
+    width: 80%;
   }
 }
 
 @media (max-width:500px) {
 
-    main{
+    #blogContainer {
       grid-template-columns: repeat(1, 1fr);
     }
     
