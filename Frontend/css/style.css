@@ -11,9 +11,12 @@
   --main-colour-dark:  #333;
   --sub-colour-dark:  rgba(156, 56, 23,1.0);
   --btn-hover-colour:  rgba(156, 56, 23, 0.3);
-  --blog-colour-start:  rgb(173, 116, 59);
-  --blog-colour-end: rgba(242, 217, 104, 0.5);
+  --grad-colour-start:  rgb(173, 116, 59);
+  --grad-colour-end: rgba(242, 217, 104, 0.5);
+  --blog-colour-start: rgb(255, 183, 0);
+  --blog-colour-end: rgb(255, 234, 0);
   --light-accent: rgb(227, 196, 150);
+  --drop-shadow: rgb(255, 158, 97);
 }
 
 /* Default Html Tags //////////////////////////////////////////////////////////////////////////////*/
@@ -33,7 +36,7 @@ header {
   margin: 0 auto;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   margin: 0;
   font-size: 50pt;
   color: var(--sub-colour-dark);
@@ -45,7 +48,7 @@ h2 {
   margin-bottom: 30px;
 }
 
-h3 {
+h3, h4 {
   font-size: 25pt;
   margin-bottom: 25px;
 }
@@ -123,14 +126,14 @@ footer {
 
 @keyframes background_animation
 {
-  0%{background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)0%);}
-  100%{background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)100%);}
+  0%{background: linear-gradient(0deg, var(--grad-colour-start) 0%, var(--grad-colour-end)0%);}
+  100%{background: linear-gradient(0deg, var(--grad-colour-start) 0%, var(--grad-colour-end)100%);}
 }
 
 /* Change background on mouse-over */
 .navbar a:hover {
   animation: background_aniatmion 125ms linear;
-  background: linear-gradient(0deg, var(--blog-colour-start) 0%, var(--blog-colour-end)100%);  /*#ddd;*/
+  background: linear-gradient(0deg, var(--grad-colour-start) 0%, var(--grad-colour-end)100%);  /*#ddd;*/
   color: var(--main-colour-light);
 }
 
@@ -146,7 +149,7 @@ footer {
   position: fixed;
   z-index:999;
   width: 100vw;
-  background: linear-gradient(45deg, var(--blog-colour-start) 0%,var(--blog-colour-end) 100%);
+  background: linear-gradient(45deg, var(--grad-colour-start) 0%,var(--grad-colour-end) 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -253,6 +256,7 @@ footer {
   margin-right: auto;
   text-align: center;
   width: 90%;
+  height:100vh;
 }
 
 .singleBlog{
@@ -261,12 +265,15 @@ footer {
   max-height: 50vh;
   height: 100%;
   box-sizing: border-box;
-  box-shadow: 0 2px 10px #ccc;
+  box-shadow: 3px 3px 10px var(--drop-shadow);
+  margin: 10px;
+  
   transition: all .5s;
-  background: url("../imgs/email-pattern.png") repeat;
+  background: linear-gradient(45deg, var(--blog-colour-start) 0%,var(--blog-colour-end) 100%);
+  border-radius: 10px;
 }
 .singleBlog:hover{
-  box-shadow: 0 2px 13px #ccc;
+  box-shadow: 3px 3px 13px var(--drop-shadow);
   transition: all .5s;
 }
 .singleBlog:hover img{
@@ -282,54 +289,77 @@ footer {
 /* Camp Content////////////////////////////////////////////////////////////////////////////////////*/
 
 .campContent{ /* Section title, author, date, etc. */
-  position: absolute;
+  position: relative;
+  height: 85%;
+  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
   left: 0;
-  bottom: -45px;
-  width: 100%;
+
+  width: calc(100% - 10px);
   color: var(--main-colour-light);
+  margin-top: 10px;
   padding: 10px 5px;
-  background: linear-gradient(45deg, var(--blog-colour-start) 0%,var(--blog-colour-end) 100%);
+
   transition: all .5s;
 }
 
 .campContent h3{
-  font-size: 20px;
+  font-size: 16pt;
   font-weight: 500;
   margin: 0;
   color:var(--main-colour-light);
 }
-.campContent h3 span{
+.campContent h4{
   display: block;
-  font-size: 60%;
-  margin-top: 5px;
+  font-size: 12pt;
+  margin: 5px 0 5px 0;
   font-weight: 600;
   font-weight: 300;
-  font-style: italic;
   color:var(--main-colour-light);
 }
 
 .campContent a{
-  font-size: 14px;
+  font-size: 13pt;
   font-weight: 500;
 }
 
 .campContent p {
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
-.campContent a:hover{
-  text-decoration: underline;
+.campContent a:hover {
+  text-decoration: none;
+}
+
+.blogDate {
+  font-size: 10pt;
+}
+
+.blogText {
+  margin: 10px;
 }
 
 /* Camp Blog Button ///////////////////////////////////////////////////////////////////////////////*/
 
 .btn{
   display: inline-block;
-  padding: 5px 10px;
+  
+  padding: 10px 10px;
+  margin-top: 30px;
   border: 1px solid var(--main-colour-light);
-  border-radius: 3px;
+  border-radius: 10px;
   font-weight: 400;
 }
+
+.blogLink {
+  width: 80%;
+}
+
 .btn:hover , .btnViewAll:hover {
   background: var(--btn-hover-colour);
   transition: all .5s;
@@ -363,6 +393,58 @@ footer {
   filter: grayscale(30%);
   transform: scale(1.1);
 }
+
+.albumPreview, .albumThird {
+  position: relative;
+  height: 80%;
+  width: 90%;
+  margin: 0 5%;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: -180px;
+  z-index: 1;
+}
+
+.headSecond, .headThird { 
+  z-index: 2;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px;
+}
+
+.frameSample, .frameThird {
+  width: 100%;
+  position: absolute;
+  bottom: -140px;
+  left: -1px;
+}
+
+.campThird {
+  height: 100%;
+  width: 100%;
+  margin-top: -20px;
+}
+
+.albumThird {
+  width: 100%;
+  height: 100%;
+  margin: -50px 0px -300px -10px
+}
+
+.linkThird {
+  border: none;
+  text-decoration: none;
+  margin-bottom: 10px;
+
+}
+
+.campThird:hover {
+  background: var(--btn-hover-colour);
+  transition: all .5s;
+}
+
+
+
 
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////*/
