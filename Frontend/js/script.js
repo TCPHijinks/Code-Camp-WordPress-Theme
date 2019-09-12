@@ -1,5 +1,4 @@
-function closeWarning()
-{
+function closeWarning() {
     let target = document.querySelector('.warning_close');
     target.addEventListener('click', ()=>
     {
@@ -11,4 +10,7 @@ function closeWarning()
 }
 
 
+
+
 closeWarning();
+
