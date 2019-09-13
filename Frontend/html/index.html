@@ -48,7 +48,7 @@
         <div class="heroContent">            
             <h1>Coding on Country</h1>
             <p>Bringing community, country and coding together.</p>
-            <a href="#" class="btn">Read More</a>
+            <a href="#home-info" class="btn">Read More</a>
         </div>            
     </div>
 
@@ -75,8 +75,10 @@
 
         <!-- Title Section ------------------------------------------------------------->
 
-        <header>
-          <h2>Recent Camps</h2>         
+        <header class = "campHeader">
+          <h2 class = "minorHeader">Past Camps</h2>
+          <h2>Recent Camps</h2> 
+          <h2 class = "minorHeader">Upcoming Camps</h2>        
         </header>
 
         
@@ -100,14 +102,14 @@
 
               </div><!-- /campContent -->
             </div> <!-- /singleBlog -->
-            
+
 
             <div class="singleBlog">
                 <div class="campContent campThird">
-    
+
                   <div class="albumThird">
-                      <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.117150296322529%26type%3D3&width=500&show_text=true&height=645&appId" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame frameThird"></iframe>
-                  </div> <!-- /albumThird -->
+                      <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
+                    </div> <!-- /albumThird -->
     
                   <div class = "blogHead headThird">
                     <h3>Camp Name</h3>
@@ -115,12 +117,30 @@
                     <p class="blogDate">Jan 12, <a href="#"></a>2018</a></p>
                   </div> <!-- /blogHead -->
 
-                  <a href="#camps" class="linkThird" onclick="selectGallery(); gallerySelect('gallery_002')">View Gallery</a>
-
+                <a href="#camps" class="linkThird" onclick="selectGallery(); gallerySelect('gallery_002')">View Gallery</a>
+            
                 </div> <!-- /campContent -->
               </div> <!-- /singleBlog -->
 
-              
+
+
+              <div class="singleBlog">
+
+                  <div class="campContent">
+    
+                    <div class = "blogHead">
+                      <h3> Camp Name </Camp> </h3>      <!-- Insert Camp Name -->
+                      <h4> Location / Community </h4>   <!-- Insert Location / Community -->
+                      <p class="blogDate">Jan 12, 2018 </p> <!-- Insert Date -->
+                    </div> <!-- /blogHead -->
+    
+                    <p class="blogText">Sample Camp Description of what went on etc etc, blah blah blah</p> <!-- Insert Camp Description -->
+    
+                    <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('gallery_003')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
+    
+                  </div><!-- /campContent -->
+                </div> <!-- /singleBlog -->
+            
 
 
         </div><!-- /blogContainer -->
@@ -134,44 +154,55 @@
                 <!-- Sample Gallery Item 1 -->
                 <div class="individualGallery" id = "gallery_001">
                   
-                  <a href="#camps" class="baseButton" id="backButton" onclick="revertGallery(); galleryDeselect('gallery_001')">Back</a>
+                  <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_001')">Back</a>
 
-                  <div class = "campDetails">
-                    <h3>Dogs</h3>
-                    <p> Some Sample text. </p>
-                  </div> <!-- /campDetails -->
-          
-                  <div class="staticGallery" >  
-                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
-                    <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
-                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
-                    <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
-                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>         
-                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
-                    <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
-                  </div> <!-- /staticGallery -->
+
+                  <div class = "galleryMain">
+                    <div class = "campDetails">
+                      <h3>Dogs</h3>
+                      <p> Some Sample text. </p>
+                    </div> <!-- /campDetails -->
+            
+                    <div class="staticGallery" >  
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                      <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                      <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>         
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                      <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                      <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                      <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>         
+                      <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                      <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                    </div> <!-- /staticGallery -->
+                  </div> <!-- /galleryMain -->
           
                 </div> <!-- /individualGallery --> 
 
 
                 <!-- Sample Local Gallery Item 2 -->
                 <div class="individualGallery" id = "gallery_002">
-                    <a href="#camps" class="baseButton" id="backButton" onclick="revertGallery(); galleryDeselect('gallery_002')">Back</a>
+                    <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_002')">Back</a>
 
-                    <div class = "campDetails">
-                      <h3>Cats</h3>
-                      <p> Some Sample text. </p>
-                    </div><!-- /campDetails -->
-            
-                    <div class="staticGallery" >        
-                      <a href="../imgs/cat2.jpg"> <img src="../imgs/cat2_small.jpg"></a>
-                      <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
-                      <a href="../imgs/cat2.jpg"> <img src="../imgs/cat2_small.jpg"></a>
-                      <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
-                    </div><!-- /staticGallery -->
+                    <div class = "galleryMain">
+                      <div class = "campDetails">
+                        <h3>Cats</h3>
+                        <p> Some Sample text. </p>
+                      </div><!-- /campDetails -->
+              
+                      <div class="staticGallery" >        
+                        <a href="../imgs/cat2.jpg"> <img src="../imgs/cat2_small.jpg"></a>
+                        <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
+                        <a href="../imgs/cat2.jpg"> <img src="../imgs/cat2_small.jpg"></a>
+                        <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
+                      </div><!-- /staticGallery -->
 
-                  </div><!-- /individualGallery --> 
-
+                    </div><!-- /individualGallery --> 
+                  </div>
 
 
         </div> <!-- /localGalleries -->
@@ -179,7 +210,21 @@
 
         <!-- External Galleries -------------------------->
         <div id="linkedGalleries">
+            <div class="individualGallery" id = "gallery_003">
+                <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_003')">Back</a>
 
+                <div class = "galleryMain fbGallery">
+                  <div class = "campDetails">
+                    <h3>Facebook</h3>
+                    <p> Some Sample text. </p>
+                  </div><!-- /campDetails -->
+                  
+                
+                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.117150296322529%26type%3D3&width=500" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class = "fbFrame"></iframe>
+                 
+
+                </div>
+              </div><!-- /individualGallery --> 
 
         </div> <!-- /linkedGalleries -->
 
@@ -190,6 +235,36 @@
 
         
       </div> <!-- /recentCamps -->
+
+
+
+
+
+      <div id = "pastCamps">
+        <header class = "campHeader">
+            <h2>Past Camps</h2>
+            <h2 class = "minorHeader">Recent Camps</h2> 
+            <h2 class = "minorHeader">Upcoming Camps</h2>        
+        </header>
+
+        <p>Section Not Yet Implemented</p>
+
+      </div>
+
+
+
+
+      <div id = "upcomingCamps">
+
+        <header class = "campHeader">
+            <h2 class = "minorHeader">Past Camps</h2>
+            <h2 class = "minorHeader">Recent Camps</h2> 
+            <h2>Upcoming Camps</h2>        
+        </header>
+
+        <p> Section Not Yet Implemented</p>
+
+      </div>
       
     </div><!-- /camps -->
 

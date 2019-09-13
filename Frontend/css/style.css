@@ -95,9 +95,10 @@ footer {
 .container{
   /*max-width: 1200px;*/
   width: 100%;
-  padding-top: 45px;
+  padding-top: 100px;
   margin: 0 auto;
   min-height: 100vh;
+  overflow: visible;
 }
 
 
@@ -221,9 +222,11 @@ footer {
 #home-info{
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   text-anchor: center;
   flex-wrap: wrap;
+  padding-top: 100px;
+  background-color: grey;
 }
 
 #home-video {
@@ -258,12 +261,15 @@ footer {
   text-align: center;
   width: 90%;
   height: auto;
+  
+  
 }
 
 .singleBlog{
   position: relative;
   overflow: hidden;
   height: 50vh;
+  max-height: 600px;
   box-sizing: border-box;
   box-shadow: 3px 3px 10px var(--drop-shadow);
   margin: 10px;
@@ -299,12 +305,12 @@ footer {
   justify-content: space-between;
   align-items: center;
 
-  left: 0;
+  left: 5px;
 
   width: calc(100% - 10px);
   color: var(--main-colour-light);
   margin-top: 10px;
-  padding: 10px 5px;
+  padding: 10px 0px;
 
   transition: all .5s;
 }
@@ -345,6 +351,39 @@ footer {
   margin: 10px;
 }
 
+.campHeader {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100vw;
+
+}
+
+.campHeader h2 {
+  margin-right: 30px;
+}
+
+.minorHeader {
+  font-size: 25pt;
+  width: 25vw;
+  opacity: 0.5;
+}
+
+.minorHeader:hover {
+  opacity: 1;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+#pastCamps {
+  display: none;
+}
+
+#upcomingCamps {
+  display: none;
+}
+
+
 /* Camp Blog Button ///////////////////////////////////////////////////////////////////////////////*/
 
 .btn{
@@ -371,20 +410,13 @@ footer {
 /* Camp Gallery ///////////////////////////////////////////////////////////////////////////////////*/
 
 
-#gallery {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 
 .staticGallery img {
   padding: 0;
-  margin: 0;
-  width: 200px;
-  height: 200px;
+  margin: 5px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 10px;
   
@@ -433,21 +465,36 @@ footer {
 .campThird {
   height: 100%;
   width: 100%;
-  margin-top: -20px;
+  margin: 0px;
+  padding: 0;
+  left: 0;
 }
 
 .albumThird {
   width: 100%;
-  height: 100%;
+  height: 80%;
   max-height: 490px;
-  margin: -50px 0px -300px -10px
+  margin: 0px 0px -300px 0px;
+  padding: 0;
+}
+
+.albumThird img {
+  object-fit: cover;
 }
 
 .linkThird {
   border: none;
   text-decoration: none;
-  margin-bottom: 10px;
+  /*margin-bottom: 20px;*/
+  cursor: pointer;
+  width: 100%;
+  height: 15%;
+  padding-top: 5%;
 
+}
+
+.linkThird:hover {
+  cursor: pointer;
 }
 
 .campThird:hover {
@@ -461,12 +508,45 @@ footer {
   display: none;
 }
 
+.staticGallery {
+  width: calc(50vw - 100px);
+  height: 40vw;
+  max-height: 600px;
+  margin: 20px 0px 20px 100px;
 
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: flex-start;
 
+  overflow-x: scroll;
+}
 
+.campDetails {
+  width: calc(50vw - 100px);
+  text-align: left;
+  padding: 30px 50px;
+}
 
+.galleryMain {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+}
 
+.fbFrame {
+  margin: 20px;
+  width: calc(50vw - 40px);
+  max-width: 500px;
+}
 
+.backButton {
+  margin: 10px;
+  padding: 5px;
+  width: auto;
+  left: 0;
+}
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* Footer /////////////////////////////////////////////////////////////////////////////////////////*/
@@ -494,10 +574,6 @@ footer {
 
 
 
-/* fb Gallery iframe */
-.fbFrame {
-  max-width: 100%;
-}
 
 
 
@@ -537,6 +613,56 @@ footer {
   #home-video-info {
     width: 80%;
   }
+
+  .minorHeader {
+    display: none;
+  }
+
+
+
+
+  .staticGallery {
+    width: 100vw;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+  
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+
+    overflow: hidden;
+
+
+  }
+  
+  .campDetails {
+    width: 100vw;
+    text-align: center;
+    padding: 0;
+    padding-bottom: 50px;
+  }
+  
+  .galleryMain {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+  }
+
+  .fbFrame {
+    width: calc(100vw - 40px);
+
+  }
+
+  .fbGallery {
+    margin-right: calc((100vw - 500px)/2);
+  }
+
+
+
 }
 
 @media (max-width:630px) {
@@ -545,6 +671,8 @@ footer {
     width: 100px;
     height: 100px;
   }
+
+ 
 
  
 }
@@ -563,6 +691,13 @@ footer {
       text-align: left;
     }
 
+   .albumThird {
+     height: 85%;
+   }
+    
+   .fbGallery {
+     margin: 0;
+   }
    
 }
 
