@@ -111,8 +111,10 @@ footer {
   position: fixed; /* Set the navbar to fixed position */
   z-index: 999;
   top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  left:0;
+  width: 100vw; /* Full width */
   text-align: center;
+  
 }
 
 /* Links inside the navbar */
@@ -124,6 +126,7 @@ footer {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  
 }
 
 @keyframes background_animation
@@ -226,7 +229,7 @@ footer {
   text-anchor: center;
   flex-wrap: wrap;
   padding-top: 100px;
-  background-color: grey;
+  
 }
 
 #home-video {
@@ -367,12 +370,14 @@ footer {
   font-size: 25pt;
   width: 25vw;
   opacity: 0.5;
+  display: none;
 }
 
 .minorHeader:hover {
   opacity: 1;
   transition: all .5s;
   cursor: pointer;
+  
 }
 
 #pastCamps {
@@ -488,8 +493,8 @@ footer {
   /*margin-bottom: 20px;*/
   cursor: pointer;
   width: 100%;
-  height: 15%;
-  padding-top: 5%;
+  height: 13%;
+  padding-top: 7%;
 
 }
 
@@ -542,10 +547,56 @@ footer {
 }
 
 .backButton {
-  margin: 10px;
+  margin: 10px auto 10px calc(-100% + 300px);
   padding: 5px;
-  width: auto;
+  width: 80px;
   left: 0;
+}
+
+.mobileBack {
+  color: var(--light-accent);
+  text-decoration: none;
+  position: fixed;
+  
+  top: 0px;
+  left: 0px;
+  z-index: 1500;
+  padding: 14px 16px;
+
+  font-family: 'Montserrat', sans-serif;
+
+  display: none;
+}
+
+.mobNav{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  background-color:var(--main-colour-dark);
+  color: var(--light-accent);
+  text-decoration: none;
+  z-index: 1200;
+  padding: 14px 16px;
+
+  font-family: 'Montserrat', sans-serif;
+  display: none;
+  
+}
+
+#menu, #close {
+  float: right;
+  margin-right: 50px;
+  color: var(--light-accent);
+  cursor: pointer;
+}
+
+#close {
+  display: none;
+}
+
+#mob {
+  display: none;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -661,7 +712,33 @@ footer {
     margin-right: calc((100vw - 500px)/2);
   }
 
+  .navbar a {
+    width: 100%;
+    height: 5vh;
+    font-size: 20pt;
+    padding-top: 2vh;
+  }
 
+  .navbar {
+    display: none;
+    top:47px;
+    width: 100vw;
+    height: calc(100vh - 47px);
+    z-index: 1600;
+  }
+
+  .mobNav {
+    display: initial;
+  }
+
+  .mobileBack {
+    display: initial;
+  }
+
+  .backButton {
+    display: none;
+  }
+  
 
 }
 

@@ -23,11 +23,24 @@
 
 <!-- Navigation Bar ///////////////////////////////////////////////////////////////////////////////////////////////////-->
     
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#camps">Recent Camps</a>
-        <a href="#challenges">Challenges</a>
+    <div class = "mobNav">
+      <a id="menu" onclick="openMenu()">menu</a>
+      <a id="close" onclick="closeMenu()">close</a>
+    </div>
+
+    <div class="navbar" id="mob">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#camps" onclick="closeMenu()">Camps</a>
+        <a href="#challenges" onclick="closeMenu()">Challenges</a>
     </div> 
+
+    <div class="navbar">
+        <a href="#home" >Home</a>
+        <a href="#camps" >Camps</a>
+        <a href="#challenges" >Challenges</a>
+    </div> 
+
+    
     
 
 <!-- Warning Bar //////////////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -211,6 +224,7 @@
         <!-- External Galleries -------------------------->
         <div id="linkedGalleries">
             <div class="individualGallery" id = "gallery_003">
+                <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('gallery_003')"> &lt Back</a>
                 <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_003')">Back</a>
 
                 <div class = "galleryMain fbGallery">

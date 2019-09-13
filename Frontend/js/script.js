@@ -12,7 +12,27 @@ function closeWarning() {
 
 closeWarning();
 
+function openMenu() {
+    var x = document.getElementById("close");
+    var o = document.getElementById("menu");
+    var m = document.getElementById("mob");
 
+    x.style.display = 'initial';
+    o.style.display = 'none';
+    m.style.display = 'initial';
+
+}
+
+function closeMenu() {
+    var x = document.getElementById("close");
+    var o = document.getElementById("menu");
+    var m = document.getElementById("mob");
+
+    x.style.display = 'none';
+    o.style.display = 'initial';
+    m.style.display = 'none';
+
+}
 
 
 
