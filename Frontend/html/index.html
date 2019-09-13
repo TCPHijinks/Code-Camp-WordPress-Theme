@@ -8,28 +8,42 @@
   <link rel="stylesheet" href="../css/all.min.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/modal.css">
-  <link rel="stylesheet" href="../css/lightbox.min.css">
-  <script src="../js/lightbox-plus-jquery.min.js" defer></script>
+  <!--<link rel="stylesheet" href="../css/lightbox.min.css">-->
+  <!-- <script src="../js/lightbox-plus-jquery.min.js" defer></script> -->
   <!-- <script defer src="../js/modal.js"></script> -->
+  <!-- <script src="../js/jquery.min.js"></script> -->
   <script src="../js/gallery.js" defer></script>
   <script src="../js/script.js" defer></script>
 </head >
 <body>
 
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
+<!-- HEADER SECTION ///////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
 
-    <!-- Navigation bar-->
+<!-- Navigation Bar ///////////////////////////////////////////////////////////////////////////////////////////////////-->
+    
     <div class="navbar">
         <a href="#home">Home</a>
         <a href="#camps">Recent Camps</a>
         <a href="#challenges">Challenges</a>
     </div> 
     
+
+<!-- Warning Bar //////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    
     <div class="warning">
       <p><b>Warning:</b> Aboriginal and Torres Strait Islander viewers are warned that this site may contain images and voices of deceased persons.</p>
       <a class="warning_close"><i class="fas fa-times"></i></a>
     </div>
 
-    <!-- Home / Main -->
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
+<!-- HOME/HERO SECTION ////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
+
+<!-- Home / Main //////////////////////////////////////////////////////////////////////////////////////////////////////-->
+    
     <div class="hero-image" id="home">       
         <div class="heroContent">            
             <h1>Coding on Country</h1>
@@ -38,104 +52,167 @@
         </div>            
     </div>
 
-    <!-- Idk where this will go yet -->
+
+<!-- Home - About Section /////////////////////////////////////////////////////////////////////////////////////////////-->
+    
     <div id="home-info">
-        
         <iframe id="home-video" src="https://www.youtube.com/embed/8ukWYBMH-zI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      
         <div id="home-video-info">
           <h3>About</h3>
           <p>RANDOM PLACEHOLDER Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas dolor alias reprehenderit, ad, voluptatibus praesentium laudantium architecto mollitia tempora minus nihil perferendis harum doloribus labore.</p>
         </div> 
     </div>
   
+          
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
+<!-- CAMP GALLERY SECTION /////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
 
-              
-    <!-- Past camps -->
     <div class="container" id="camps">
-      <header>
-        <h2>Recent Camps</h2>         
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse laborum, officia delectus corrupti modi natus?</br> </br></p>
-      </header>
-      
-      <!-- Section for Gallery List / Recent Events List-->
-      <div id="blogContainer">
 
-          <div class="singleBlog">
+<!-- Recent Camps /////////////////////////////////////////////////////////////////////////////////////////////////////-->
+      <div id="recentCamps">
+
+        <!-- Title Section ------------------------------------------------------------->
+
+        <header>
+          <h2>Recent Camps</h2>         
+        </header>
+
+        
+        <!-- Blog List ----------------------------------------------------------------->
+
+        <div class="blogContainer" id = "recentContainer">
+
+            <div class="singleBlog">
+
               <div class="campContent">
+
                 <div class = "blogHead">
-                  <h3>Camp Name</h3>
-                  <h4>Wujal Wujal</h4>
-                  <p class="blogDate">Jan 12, <a href="#"></a>2018</a></p>
-                </div>
-                <p class="blogText">Sample Camp Description of what went on etc etc, blah blah blah</p>
-                <a href="#campGallery" class="btn blogLink" onclick="selectGallery()">View Gallery</a>
-              </div>
-            </div> <!-- For Upcoming Camps -->
+                  <h3> Camp Name </Camp> </h3>      <!-- Insert Camp Name -->
+                  <h4> Location / Community </h4>   <!-- Insert Location / Community -->
+                  <p class="blogDate">Jan 12, 2018 </p> <!-- Insert Date -->
+                </div> <!-- /blogHead -->
 
-          <div class="singleBlog">
-              <div class="campContent campThird">
-  
-                <div class="albumThird">
-                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.117150296322529%26type%3D3&width=500&show_text=true&height=645&appId" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame frameThird"></iframe>
-                    
-                </div>
-  
-                <div class = "blogHead headThird">
-                  <h3>Camp Name</h3>
-                  <h4>Wujal Wujal</h4>
-                  <p class="blogDate">Jan 12, <a href="#"></a>2018</a></p>
-                </div>
-                <a href="#campGallery" class="linkThird">View Gallery</a>
-              </div>
-            </div>
+                <p class="blogText">Sample Camp Description of what went on etc etc, blah blah blah</p> <!-- Insert Camp Description -->
 
+                <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('gallery_001')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
+
+              </div><!-- /campContent -->
+            </div> <!-- /singleBlog -->
             
 
+            <div class="singleBlog">
+                <div class="campContent campThird">
+    
+                  <div class="albumThird">
+                      <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.117150296322529%26type%3D3&width=500&show_text=true&height=645&appId" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame frameThird"></iframe>
+                  </div> <!-- /albumThird -->
+    
+                  <div class = "blogHead headThird">
+                    <h3>Camp Name</h3>
+                    <h4>Wujal Wujal</h4>
+                    <p class="blogDate">Jan 12, <a href="#"></a>2018</a></p>
+                  </div> <!-- /blogHead -->
 
-      </div><!-- End blogContainer -->
+                  <a href="#camps" class="linkThird" onclick="selectGallery(); gallerySelect('gallery_002')">View Gallery</a>
 
-      <a href="#camps" class="baseButton">View All</a>
+                </div> <!-- /campContent -->
+              </div> <!-- /singleBlog -->
+
+              
+
+
+        </div><!-- /blogContainer -->
+
+        
+        <!-- Galleries ----------------------------------------------------------------->
+
+        <!-- Local Galleries ----------------------------->
+        <div id="localGalleries">
+            
+                <!-- Sample Gallery Item 1 -->
+                <div class="individualGallery" id = "gallery_001">
+                  
+                  <a href="#camps" class="baseButton" id="backButton" onclick="revertGallery(); galleryDeselect('gallery_001')">Back</a>
+
+                  <div class = "campDetails">
+                    <h3>Dogs</h3>
+                    <p> Some Sample text. </p>
+                  </div> <!-- /campDetails -->
+          
+                  <div class="staticGallery" >  
+                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                    <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                    <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>         
+                    <a href="../imgs/dog1.jpg"> <img src="../imgs/dog1_small.jpg"></a>
+                    <a href="../imgs/dog2.jpg"> <img src="../imgs/dog2_small.jpg"></a>
+                  </div> <!-- /staticGallery -->
+          
+                </div> <!-- /individualGallery --> 
+
+
+                <!-- Sample Local Gallery Item 2 -->
+                <div class="individualGallery" id = "gallery_002">
+                    <a href="#camps" class="baseButton" id="backButton" onclick="revertGallery(); galleryDeselect('gallery_002')">Back</a>
+
+                    <div class = "campDetails">
+                      <h3>Cats</h3>
+                      <p> Some Sample text. </p>
+                    </div><!-- /campDetails -->
+            
+                    <div class="staticGallery" >        
+                      <a href="../imgs/cat2.jpg"> <img src="../imgs/cat2_small.jpg"></a>
+                      <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
+                      <a href="../imgs/cat2.jpg"> <img src="../imgs/cat2_small.jpg"></a>
+                      <a href="../imgs/cat1.jpg"> <img src="../imgs/cat1_small.jpg"></a>
+                    </div><!-- /staticGallery -->
+
+                  </div><!-- /individualGallery --> 
+
+
+
+        </div> <!-- /localGalleries -->
+
+
+        <!-- External Galleries -------------------------->
+        <div id="linkedGalleries">
+
+
+        </div> <!-- /linkedGalleries -->
+
+
       
-    </div><!-- End container - camps -->
-
-    <div class="container" id="campGallery">
-
-      <div class="individualGallery">
-
-        <div class = "campDetails">
-          <h3>Name of Code Camp</h3>
-          <p> Some Sample text. </p>
-        </div>
-
-        <div class="staticGallery" >  
-          <a href="../imgs/dog1.jpg" > <img src="../imgs/dog1_small.jpg" class = "imgThumb"></a>
-          <a href="../imgs/dog2.jpg" > <img src="../imgs/dog2_small.jpg" class = "imgThumb"></a>
-          <a href="../imgs/dog1.jpg" > <img src="../imgs/dog1_small.jpg" class = "imgThumb"></a>
-          <a href="../imgs/dog2.jpg" > <img src="../imgs/dog2_small.jpg" class = "imgThumb"></a>
-          <a href="../imgs/dog1.jpg" > <img src="../imgs/dog1_small.jpg" class = "imgThumb"></a>         
-          <a href="../imgs/cat2.jpg" > <img src="../imgs/cat2_small.jpg" class = "imgThumb"></a>
-          <a href="../imgs/dog1.jpg" > <img src="../imgs/dog1_small.jpg" class = "imgThumb"></a>
-          <a href="../imgs/dog2.jpg" > <img src="../imgs/dog2_small.jpg" class = "imgThumb"></a>
-        </div>
 
 
-        <a href="#camps" class="baseButton" id="backButton" onclick="revertGallery()">Back</a>
-      </div>
+
+        
+      </div> <!-- /recentCamps -->
+      
+    </div><!-- /camps -->
+
+
       
       
 
-    </div><!-- End container - campGallery -->
+   
 
 
 
 
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
+<!-- FOOTER ///////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->  
 
   <footer>
+
     <div id="fbFooter">
       <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="72" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFooterFrame"></iframe>
       <p> Some more information </br> to do with help </br> or contact </br> or website developers... </p>
-    </div>  
+    </div> 
+
   </footer>
 
 
