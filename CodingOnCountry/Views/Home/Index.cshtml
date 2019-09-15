@@ -9,6 +9,12 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<!-- Temp camp edit page button. -->
+<br />
+<br />
+<button onclick="window.location.href='/camps'">View Camps [ADMIN]</button>
+<br />
+<br />
 @foreach (var item in Model)
 {
     <div>
@@ -29,5 +35,5 @@
         @Html.DisplayFor(modelItem => item.CampEndTime)
     </div>
     <p></p>
-    
+
 }
