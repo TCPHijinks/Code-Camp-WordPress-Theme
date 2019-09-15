@@ -1,18 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using CodingOnCountry.Models;
+using System.Diagnostics;
 
 namespace CodingOnCountry.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly CodingOnCountryContext _context;
+
+        public HomeController(CodingOnCountryContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        // GET: Camps
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Camp.ToListAsync());
         }
 
         public IActionResult Privacy()
