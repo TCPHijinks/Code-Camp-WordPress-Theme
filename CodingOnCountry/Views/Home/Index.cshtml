@@ -17,23 +17,23 @@
 <br />
 @foreach (var item in Model)
 {
+    <br />
+    <br />
     <div>
         @Html.DisplayFor(modelItem => item.Name)
-
+        <br />
         @Html.DisplayFor(modelItem => item.Description)
-
+        <br />
         @Html.DisplayFor(modelItem => item.CampCommunity)
-
+        <br />
         @Html.DisplayFor(modelItem => item.CampAddress)
-
+        <br />
         @Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)
-
+        <br />
         @Html.DisplayFor(modelItem => item.CampDate)
-
+        <br />
         @Html.DisplayFor(modelItem => item.CampStartTime)
-
+        <br />
         @Html.DisplayFor(modelItem => item.CampEndTime)
     </div>
-    <p></p>
-
 }
