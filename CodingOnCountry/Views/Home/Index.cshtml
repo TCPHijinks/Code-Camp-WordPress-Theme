@@ -128,8 +128,11 @@
                                 <h4> @Html.DisplayFor(modelItem => item.CampAddress) |  @Html.DisplayFor(modelItem => item.CampCommunity) </h4>
                                 <p class="blogDate">@Html.DisplayFor(modelItem => item.CampDate) </p>
                             </div> <!-- /blogHead -->
-
-                            <p class="blogText">@Html.DisplayFor(modelItem => item.Description)</p> <!-- Camp Description -->
+                            <div>
+                                <p class="blogText">Starts at: @Html.DisplayFor(modelItem => item.CampStartTime)</p> <!-- Camp Description -->
+                                <p class="blogText">Ends at: @Html.DisplayFor(modelItem => item.CampEndTime)</p>
+                            </div>
+                           
                             <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID()')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
 
                         </div><!-- /campContent -->
