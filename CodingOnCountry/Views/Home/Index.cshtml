@@ -12,8 +12,31 @@
     <script src="~/js/script.js"></script>
 </environment>
 
+@functions 
+{   
+    public int campIdNum = 0;
+    public string GetGalleryID()
+    {
+        if (campIdNum > 9)
+            return "gallery_00" + campIdNum;
+        else if (campIdNum > 99)
+            return "gallery_0" + campIdNum;
+        else if (campIdNum > 999)
+            return "gallery_" + campIdNum;
+        return "gallery_00" + campIdNum;
+    }
 
+    public void IncrementCampID()
+    {
+        campIdNum++;
+    }
 
+    public void ResetCampID()
+    {
+        campIdNum = 0;
+    }
+
+}
 <body>
 
     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -96,149 +119,71 @@
 
             <div class="blogContainer" id="recentContainer">
 
-                <div class="singleBlog">
+                @foreach (var item in Model)
+                {     
+                    <div class="singleBlog">
+                        <div class="campContent">
+                            <div class="blogHead">
+                                <h3> @Html.DisplayFor(modelItem => item.Name) </h3>
+                                <h4> @Html.DisplayFor(modelItem => item.CampAddress) |  @Html.DisplayFor(modelItem => item.CampCommunity) </h4>
+                                <p class="blogDate">@Html.DisplayFor(modelItem => item.CampDate) </p>
+                            </div> <!-- /blogHead -->
 
-                    <div class="campContent">
+                            <p class="blogText">@Html.DisplayFor(modelItem => item.Description)</p> <!-- Camp Description -->
+                            <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID()')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
 
-                        <div class="blogHead">
-                            <h3> Camp Name </Camp> </h3> <!-- Insert Camp Name -->
-                            <h4> Location / Community </h4> <!-- Insert Location / Community -->
-                            <p class="blogDate">Jan 12, 2018 </p> <!-- Insert Date -->
-                        </div> <!-- /blogHead -->
+                        </div><!-- /campContent -->
+                    </div> <!-- /singleBlog -->
 
-                        <p class="blogText">Sample Camp Description of what went on etc etc, blah blah blah</p> <!-- Insert Camp Description -->
-
-                        <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('gallery_001')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
-
-                    </div><!-- /campContent -->
-                </div> <!-- /singleBlog -->
-
-
-                <div class="singleBlog">
-                    <div class="campContent campThird">
-
-                        <div class="albumThird">
-                            <a href="~/img/Temp/cat1.jpg"> <img src="~/img/Temp/cat1_small.jpg"></a>
-                        </div> <!-- /albumThird -->
-
-                        <div class="blogHead headThird">
-                            <h3>Camp Name</h3>
-                            <h4>Wujal Wujal</h4>
-                            <p class="blogDate">Jan 12, <a href="#"></a>2018</a></p>
-                        </div> <!-- /blogHead -->
-
-                        <a href="#camps" class="linkThird" onclick="selectGallery(); gallerySelect('gallery_002')">View Gallery</a>
-
-                    </div> <!-- /campContent -->
-                </div> <!-- /singleBlog -->
-
-
-
-                <div class="singleBlog">
-
-                    <div class="campContent">
-
-                        <div class="blogHead">
-                            <h3> Camp Name </Camp> </h3> <!-- Insert Camp Name -->
-                            <h4> Location / Community </h4> <!-- Insert Location / Community -->
-                            <p class="blogDate">Jan 12, 2018 </p> <!-- Insert Date -->
-                        </div> <!-- /blogHead -->
-
-                        <p class="blogText">Sample Camp Description of what went on etc etc, blah blah blah</p> <!-- Insert Camp Description -->
-
-                        <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('gallery_003')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
-
-                    </div><!-- /campContent -->
-                </div> <!-- /singleBlog -->
-
-
+                    IncrementCampID();
+                }
+            @{ 
+                ResetCampID();
+            }
+              
 
             </div><!-- /blogContainer -->
             <!-- Galleries ----------------------------------------------------------------->
-            <!-- Local Galleries ----------------------------->
             <div id="localGalleries">
-
-                <!-- Sample Gallery Item 1 -->
-                <div class="individualGallery" id="gallery_001">
-
-                    <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_001')">Back</a>
-
-
-                    <div class="galleryMain">
-                        <div class="campDetails">
-                            <h3>Dogs</h3>
-                            <p> Some Sample text. </p>
-                        </div> <!-- /campDetails -->
-
-                        <div class="staticGallery">
-                            <a href="~/img/Temp/dog1_small.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog2.jpg"> <img src="~/img/Temp/dog2_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog2.jpg"> <img src="~/img/Temp/dog2_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog2.jpg"> <img src="~/img/Temp/dog2_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog2.jpg"> <img src="~/img/Temp/dog2_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog2.jpg"> <img src="~/img/Temp/dog2_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog1.jpg"> <img src="~/img/Temp/dog1_small.jpg"></a>
-                            <a href="~/img/Temp/dog2.jpg"> <img src="~/img/Temp/dog2_small.jpg"></a>
-                        </div> <!-- /staticGallery -->
-                    </div> <!-- /galleryMain -->
-
-                </div> <!-- /individualGallery -->
-                <!-- Sample Local Gallery Item 2 -->
-                <div class="individualGallery" id="gallery_002">
-                    <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_002')">Back</a>
-
-                    <div class="galleryMain">
-                        <div class="campDetails">
-                            <h3>Cats</h3>
-                            <p> Some Sample text. </p>
-                        </div><!-- /campDetails -->
-
-                        <div class="staticGallery">
-                            <a href="~/img/Temp/cat2.jpg"> <img src="~/img/Temp/cat2_small.jpg"></a>
-                            <a href="~/img/Temp/cat1.jpg"> <img src="~/img/Temp/cat1_small.jpg"></a>
-                            <a href="~/img/Temp/cat2.jpg"> <img src="~/img/Temp/cat2_small.jpg"></a>
-                            <a href="~/img/Temp/cat1.jpg"> <img src="~/img/Temp/cat1_small.jpg"></a>
-                        </div><!-- /staticGallery -->
-
-                    </div><!-- /individualGallery -->
-                </div>
-
-
-            </div> <!-- /localGalleries -->
+            </div>
+    
+            
             <!-- External Galleries -------------------------->
             <div id="linkedGalleries">
-                <div class="individualGallery" id="gallery_003">
-                    <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('gallery_003')"> &lt Back</a>
-                    <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('gallery_003')">Back</a>
+                @foreach (var item in Model)
+                {
+                    <div class="individualGallery" id="@GetGalleryID()">
+                        <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')"> &lt Back</a>
+                        <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')">Back</a>
 
-                    <div class="galleryMain fbGallery">
-                        <div class="campDetails">
-                            <h3>Facebook</h3>
-                            <p> Some Sample text. </p>
-                        </div><!-- /campDetails -->
+                        <div class="galleryMain fbGallery">
+                            <div class="campDetails">
+                                <h3>Facebook</h3>
+                                <p> @Html.DisplayFor(modelItem => item.Description) </p>
 
-
-                        <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.117150296322529%26type%3D3&width=500" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame"></iframe>
-
-
+                            </div><!-- /campDetails -->
+                            <iframe src="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                        </div>
                     </div>
-                </div><!-- /individualGallery -->
+                    IncrementCampID();
+                 }
+                @{ 
+                    ResetCampID();
+                }
+            
+
+
 
             </div> <!-- /linkedGalleries -->
 
 
 
-
-
-
-
         </div> <!-- /recentCamps -->
+
+
+
+
+
 
 
 
@@ -285,7 +230,7 @@
 <br />
 <br />
 @foreach (var item in Model)
-{
+    {
     <br />
     <br />
     <div>
