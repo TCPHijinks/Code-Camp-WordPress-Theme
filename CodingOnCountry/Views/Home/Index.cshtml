@@ -3,25 +3,27 @@
 @{
     ViewData["Title"] = "Coding on Country";
 }
-<environment include="Development">
-    <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/modal.css" />
+    <environment include="Development">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="~/js/gallery.js"></script>
-    <script src="~/js/script.js"></script>
-</environment>
+        <link rel="stylesheet" href="~/css/style.css" />
+        <link rel="stylesheet" href="~/css/all.min.css" />
+        <link rel="stylesheet" href="~/css/modal.css" />
+
+        <script src="~/js/gallery.js"></script>
+        <script src="~/js/script.js"></script>
+    </environment>
 
 @functions 
 {   
     public int campIdNum = 0;
     public string GetGalleryID()
     {
-        if (campIdNum > 9)
+        if (campIdNum < 9)
             return "gallery_00" + campIdNum;
-        else if (campIdNum > 99)
+        else if (campIdNum < 99)
             return "gallery_0" + campIdNum;
-        else if (campIdNum > 999)
+        else if (campIdNum < 999)
             return "gallery_" + campIdNum;
         return "gallery_00" + campIdNum;
     }
@@ -66,9 +68,9 @@
 
     <!-- Warning Bar //////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-    <div class="warning">
+    <div class="warning" id="warning">
         <p><b>Warning:</b> Aboriginal and Torres Strait Islander viewers are warned that this site may contain images and voices of deceased persons.</p>
-        <a class="warning_close"><i class="fas fa-times"></i></a>
+        <a class="warning_close" onclick="closeWarning()">X</a>
     </div>
 
 
@@ -160,11 +162,11 @@
                         <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')">Back</a>
                         <div class="galleryMain fbGallery">
                             <div class="campDetails">
-                                <h3>Facebook</h3>
+                                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                                 <p> @Html.DisplayFor(modelItem => item.Description) </p>
 
                             </div><!-- /campDetails -->
-                            <iframe src="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                            <iframe src="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame"></iframe>
                         </div>
                     </div>
                     IncrementCampID();

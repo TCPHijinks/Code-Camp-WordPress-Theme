@@ -9,7 +9,7 @@ function revertGallery() {
     var c = document.getElementById("recentContainer");
     var g = document.getElementById("localGalleries");
     g.style.display = "none";
-    c.style.display = "grid";
+    c.style.display = "flex";
 }
 
 
