@@ -17,7 +17,7 @@
     </environment>
 
 @functions
-{
+{    
     public int campIdNum = 0;
     public string GetGalleryID()
     {
@@ -128,22 +128,27 @@
 
                 @foreach (var item in Model)
                 {
-                    <div class="singleBlog">
-                        <div class="campContent">
-                            <div class="blogHead">
-                                <h3> @Html.DisplayFor(modelItem => item.Name) </h3>
-                                <h4> @Html.DisplayFor(modelItem => item.CampAddress) |  @Html.DisplayFor(modelItem => item.CampCommunity) </h4>
-                                <p class="blogDate">@Html.DisplayFor(modelItem => item.CampDate) </p>
-                            </div> <!-- /blogHead -->
-                            <div>
-                                <p class="blogText">Starts at: @Html.DisplayFor(modelItem => item.CampStartTime)</p> <!-- Camp Description -->
-                                <p class="blogText">Ends at: @Html.DisplayFor(modelItem => item.CampEndTime)</p>
-                            </div>
+                    // Create facebook blogs.
+                    if (item.EmbededFacebookAlbumLink != null && item.EmbededFacebookAlbumLink != " ")
+                    {
+                        <div class="singleBlog">
+                            <div class="campContent">
+                                <div class="blogHead">
+                                    <h3> @Html.DisplayFor(modelItem => item.Name) </h3>
+                                    <h4> @Html.DisplayFor(modelItem => item.CampAddress) |  @Html.DisplayFor(modelItem => item.CampCommunity) </h4>
+                                    <p class="blogDate">@Html.DisplayFor(modelItem => item.CampDate) </p>
+                                </div> <!-- /blogHead -->
+                                <div>
+                                    <p class="blogText">Starts at: @Html.DisplayFor(modelItem => item.CampStartTime)</p> <!-- Camp Description -->
+                                    <p class="blogText">Ends at: @Html.DisplayFor(modelItem => item.CampEndTime)</p>
+                                </div>
 
-                            <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID()')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
+                                <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID()')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
 
-                        </div><!-- /campContent -->
-                    </div> <!-- /singleBlog -->
+                            </div><!-- /campContent -->
+                        </div> <!-- /singleBlog -->
+                    }
+
 
                     IncrementCampID();
                 }
@@ -153,118 +158,109 @@
 
 
             </div><!-- /blogContainer -->
-
-            <!-- Galleries ----------------------------------------------------------------->
+            <!--Galleries----------------------------------------------------------------->
             <div id="localGalleries">
-                <div class="singleBlog">
-                    <div class="campContent">
-                        <div class="blogHead">
-                            <h3> ss </h3>
-                            <h4>ss |  ss </h4>
-                            <p class="blogDate">ss </p>
-                        </div> <!-- /blogHead -->
-                        <div>
-                            <p class="blogText">Starts at: ss</p> <!-- Camp Description -->
-                            <p class="blogText">Ends at:ss</p>
+                @{
+                    List<string> dirs = new List<string>();
+                    dirs.AddRange(System.IO.Directory.GetDirectories("wwwroot\\uploads\\camps\\"));
+                    for (int i = 0; i < dirs.Count; i++)
+                    {
+                         string path = dirs[i]+"\\";
+
+                        <div id="slideshow">
+                                            <div id="slides">
+                                                <h1>TEST</h1>
+                                                @{
+                                                    List<string> files = new List<string>();
+                                                   
+                                                    files.AddRange(System.IO.Directory.GetFiles(path));
+                                                    for (int j = 0; j < files.Count; j++)
+                                                    {
+                                                        path = "~/uploads/camps/" + dirs[i] + "/" + files[j];
+                                                        <img src="@path" class="slideImage">
+
+                                                    }
+                                                }
+                                            </div>
+                            <button id="left" onclick="iterate(-1); blurInput('left');"><img src="-/img/Temp/prev.png"></button>
+                            <button id="right" onclick="iterate(1); blurInput('right');"><img src="/img/Temp/next.png"></button>
+                            <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</button>
                         </div>
 
-                        <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID()')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
-
-                    </div><!-- /campContent -->
-                </div> <!-- /singleBlog -->
-                <div id="slideshow">
-                    <div id="slides">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-                        <img src="~\\uploads\\1010.jpg" class="slideImage">
-
-                    </div>
-                    <button id="left" onclick="iterate(-1); blurInput('left');"><img src="../imgs/prev.png"></button>
-                    <button id="right" onclick="iterate(1); blurInput('right');"><img src="../imgs/next.png"></button>
-                    <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</a>
-
-                </div>
+                    }
+                }
             </div>
 
 
-            <!-- External Galleries -------------------------->
-            <div id="linkedGalleries">
-                @foreach (var item in Model)
-                {
-                    <div class="individualGallery" id="@GetGalleryID()">
-                        <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')"> &lt Back</a>
-                        <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')">Back</a>
-                        <div class="galleryMain fbGallery">
-                            <div class="campDetails">
-                                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                                <p> @Html.DisplayFor(modelItem => item.Description) </p>
 
-                            </div><!-- /campDetails -->
-                            <iframe src="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame"></iframe>
-                        </div>
-                    </div>
-                    IncrementCampID();
-                }
-                @{
-                    ResetCampID();
-                }
+                <!-- External Galleries -------------------------->
+                <div id="linkedGalleries">
+                    @foreach (var item in Model)
+                    {
+                        if (item.EmbededFacebookAlbumLink != null && item.EmbededFacebookAlbumLink != " ")
+                        {
+                            <div class="individualGallery" id="@GetGalleryID()">
+                                <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')"> &lt Back</a>
+                                <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID()')">Back</a>
+                                <div class="galleryMain fbGallery">
+                                    <div class="campDetails">
+                                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                                        <p> @Html.DisplayFor(modelItem => item.Description) </p>
 
-
+                                    </div><!-- /campDetails -->
+                                    <iframe src="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame"></iframe>
+                                </div>
+                            </div>
+                            IncrementCampID();
+                        }
 
 
-            </div> <!-- /linkedGalleries -->
-
-
-
-        </div> <!-- /recentCamps -->
+                    }
+                    @{
+                        ResetCampID();
+                    }
+                </div> <!-- /linkedGalleries -->
 
 
 
-
+            </div> <!-- /recentCamps -->
 
 
 
 
 
 
-        <div id="pastCamps">
-            <header class="campHeader">
-                <h2>Past Camps</h2>
-                <h2 class="minorHeader">Recent Camps</h2>
-                <h2 class="minorHeader">Upcoming Camps</h2>
-            </header>
-
-            <p>Section Not Yet Implemented</p>
-
-        </div>
 
 
 
 
-        <div id="upcomingCamps">
+            <div id = "pastCamps" >
+                <header class="campHeader">
+                    <h2>Past Camps</h2>
+                    <h2 class="minorHeader">Recent Camps</h2>
+                    <h2 class="minorHeader">Upcoming Camps</h2>
+                </header>
 
-            <header class="campHeader">
-                <h2 class="minorHeader">Past Camps</h2>
-                <h2 class="minorHeader">Recent Camps</h2>
-                <h2>Upcoming Camps</h2>
-            </header>
+                <p>Section Not Yet Implemented</p>
 
-            <p> Section Not Yet Implemented</p>
+            </div>
 
-        </div>
 
-    </div><!-- /camps -->
+
+
+            <div id = "upcomingCamps" >
+
+                <header class="campHeader">
+                    <h2 class="minorHeader">Past Camps</h2>
+                    <h2 class="minorHeader">Recent Camps</h2>
+                    <h2>Upcoming Camps</h2>
+                </header>
+
+                <p> Section Not Yet Implemented</p>
+
+            </div>
+
+        </div><!-- /camps -->
 </body>
 
 
@@ -275,35 +271,35 @@
 <!-- Temp camp edit page button. -->
 <footer>
 
-    <div id="fbFooter">
-        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="72" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFooterFrame"></iframe>
-        <p> Some more information </br> to do with help </br> or contact </br> or website developers... </p>
+        <div id = "fbFooter" >
+            < iframe src= "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width= "400" height= "72" style= "border:none;overflow:hidden" scrolling= "no" frameborder= "0" allowTransparency= "true" allow= "encrypted-media" class="fbFooterFrame"></iframe>
+            <p> Some more information</br> to do with help</br> or contact </br> or website developers... </p>
 
-    </div>
-    <button id="adminAccess" onclick="window.location.href='/camps'"> > Admin Access</button>
+        </div>
+        <button id = "adminAccess" onclick= "window.location.href='/camps'" > > Admin Access</button>
 </footer>
 
-<div id="rawCampList">
-    @foreach (var item in Model)
-    {
-        <br />
-        <br />
-        <div>
-            @Html.DisplayFor(modelItem => item.Name)
-            <br />
-            @Html.DisplayFor(modelItem => item.Description)
-            <br />
-            @Html.DisplayFor(modelItem => item.CampCommunity)
-            <br />
-            @Html.DisplayFor(modelItem => item.CampAddress)
-            <br />
-            @Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)
-            <br />
-            @Html.DisplayFor(modelItem => item.CampDate)
-            <br />
-            @Html.DisplayFor(modelItem => item.CampStartTime)
-            <br />
-            @Html.DisplayFor(modelItem => item.CampEndTime)
-        </div>
-    }
+<div id = "rawCampList" >
+       @foreach(var item in Model)
+        {
+            < br />
+            < br />
+            < div >
+                @Html.DisplayFor(modelItem => item.Name)
+                < br />
+                @Html.DisplayFor(modelItem => item.Description)
+                < br />
+                @Html.DisplayFor(modelItem => item.CampCommunity)
+                < br />
+                @Html.DisplayFor(modelItem => item.CampAddress)
+                < br />
+                @Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)
+                < br />
+                @Html.DisplayFor(modelItem => item.CampDate)
+                < br />
+                @Html.DisplayFor(modelItem => item.CampStartTime)
+                < br />
+                @Html.DisplayFor(modelItem => item.CampEndTime)
+            </ div >
+        }
 </div>
