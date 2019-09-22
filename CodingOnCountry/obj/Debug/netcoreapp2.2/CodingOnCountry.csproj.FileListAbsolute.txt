@@ -28,10 +28,9 @@ C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcore
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\CodingOnCountry.dll
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\CodingOnCountry.pdb
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\CodingOnCountry.csproj.CopyComplete
-C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Test\Index.g.cshtml.cs
-C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Test\Welcome.g.cshtml.cs
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Camps\Create.g.cshtml.cs
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Camps\Delete.g.cshtml.cs
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Camps\Details.g.cshtml.cs
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Camps\Edit.g.cshtml.cs
 C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Camps\Index.g.cshtml.cs
+C:\Users\CautiousDev\Documents\GitHub\Capstone\CodingOnCountry\obj\Debug\netcoreapp2.2\Razor\Views\Upload\Index.g.cshtml.cs

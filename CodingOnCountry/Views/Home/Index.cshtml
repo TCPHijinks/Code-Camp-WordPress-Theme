@@ -100,6 +100,9 @@
         </div>
     </div>
 
+   
+   
+   
 
     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
     <!-- CAMP GALLERY SECTION /////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -150,8 +153,48 @@
 
 
             </div><!-- /blogContainer -->
+
             <!-- Galleries ----------------------------------------------------------------->
             <div id="localGalleries">
+                <div class="singleBlog">
+                    <div class="campContent">
+                        <div class="blogHead">
+                            <h3> ss </h3>
+                            <h4>ss |  ss </h4>
+                            <p class="blogDate">ss </p>
+                        </div> <!-- /blogHead -->
+                        <div>
+                            <p class="blogText">Starts at: ss</p> <!-- Camp Description -->
+                            <p class="blogText">Ends at:ss</p>
+                        </div>
+
+                        <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID()')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
+
+                    </div><!-- /campContent -->
+                </div> <!-- /singleBlog -->
+                <div id="slideshow">
+                    <div id="slides">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+                        <img src="~\\uploads\\1010.jpg" class="slideImage">
+
+                    </div>
+                    <button id="left" onclick="iterate(-1); blurInput('left');"><img src="../imgs/prev.png"></button>
+                    <button id="right" onclick="iterate(1); blurInput('right');"><img src="../imgs/next.png"></button>
+                    <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</a>
+
+                </div>
             </div>
 
 

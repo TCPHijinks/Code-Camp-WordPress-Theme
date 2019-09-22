@@ -17,7 +17,7 @@ namespace CodingOnCountry.Models
         public string CampAddress { get; set; }
         
         public string EmbededFacebookAlbumLink { get; set; }
-       
+
         /*
         private string FormatAlbumLink()
         {
@@ -33,11 +33,11 @@ namespace CodingOnCountry.Models
         */
         [Display(Name = "Camp Date")]
         [DataType(DataType.Date)]
-        public DateTime CampDate { get; set; }
+        public DateTime CampDate { get; set; } = DateTime.Now;
 
         [Display(Name = "Camp Start Time")]
         [DataType(DataType.Time)]
-        public DateTime CampStartTime { get; set; }
+        public DateTime CampStartTime { get; set; } = DateTime.Now;
 
         [Display(Name = "Camp End Time")]
         [DataType(DataType.Time)]

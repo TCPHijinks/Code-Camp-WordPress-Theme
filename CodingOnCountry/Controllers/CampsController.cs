@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CodingOnCountry.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Http;
+using System.Text;
+using System.IO;
 
 namespace CodingOnCountry.Controllers
 {
@@ -52,13 +56,29 @@ namespace CodingOnCountry.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CampCommunity,CampAddress,EmbededFacebookAlbumLink,CampDate,CampStartTime,CampEndTime")] Camp camp)
+      //  [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,CampCommunity,CampAddress,EmbededFacebookAlbumLink,CampDate,CampStartTime,CampEndTime")] Camp camp, List<IFormFile> files)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(camp);
+                _context.Add(camp); 
                 await _context.SaveChangesAsync();
+             
+                // Save images on server.
+                foreach(IFormFile file in files)
+                {
+                    // Create camp subdirectory.
+                    string path = "wwwroot\\uploads\\camps\\" + camp.Id;
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    path += "\\"+ file.FileName; 
+                    file.CopyTo(new FileStream(path, FileMode.Create)); // Save image.
+                }
+                
+
+            
                 return RedirectToAction(nameof(Index));
             }
             return View(camp);

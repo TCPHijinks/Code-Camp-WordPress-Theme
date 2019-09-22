@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CodingOnCountry.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CodingOnCountry.Controllers
 {
@@ -14,10 +17,16 @@ namespace CodingOnCountry.Controllers
     {
         private readonly CodingOnCountryContext _context;
 
+      
+
+       
+
         public HomeController(CodingOnCountryContext context)
-        {
-            _context = context;
+        {          
+            _context = context;         
         }
+
+       
 
         // GET: Camps
         public async Task<IActionResult> Index()
