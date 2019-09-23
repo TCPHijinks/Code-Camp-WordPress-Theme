@@ -437,6 +437,7 @@ footer {
     filter: grayscale(30%);
     border-radius: 10px;
     transform: scale(1.1);
+    cursor:pointer;
 }
 
 .albumPreview, .albumThird {
@@ -514,7 +515,7 @@ footer {
 }
 
 .staticGallery {
-    width: calc(50vw - 100px);
+    width: calc(50vw - 200px);
     height: 40vw;
     max-height: 600px;
     margin: 20px 0px 20px 100px;

@@ -1,13 +1,13 @@
 function selectGallery() {
     var c = document.getElementById("recentContainer");
-    var g = document.getElementById("localGalleries");
+    var g = document.getElementById("galleryContainer");
     c.style.display = "none";
     g.style.display = "block";
 }
 
 function revertGallery() {
     var c = document.getElementById("recentContainer");
-    var g = document.getElementById("localGalleries");
+    var g = document.getElementById("galleryContainer");
     g.style.display = "none";
     c.style.display = "flex";
 }

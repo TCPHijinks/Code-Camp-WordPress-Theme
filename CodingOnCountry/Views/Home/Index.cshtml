@@ -153,6 +153,9 @@
             <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
             <div class="blogContainer" id="recentContainer">
                 @{
+                    List<string> dirs = new List<string>(); // Directories of camp albums.
+                    dirs.AddRange(System.IO.Directory.GetDirectories("wwwroot\\uploads\\camps\\"));
+
                     foreach (var item in Model)
                     {
                         // Create facebook blogs.
@@ -170,62 +173,12 @@
                                         <p class="blogText">Ends at: @Html.DisplayFor(modelItem => item.CampEndTime)</p>
                                     </div>
 
-                                    <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID("gallery")')"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
+                                    <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID("gallery")');"> View Gallery </a> <!-- Insert gallery ID (Replace 'gallery_001', must have single quotes) -->
 
                                 </div><!-- /campContent -->
                             </div> <!-- /singleBlog -->
                         }
-                        IncrementCampID();
-                    } // End of foreach.
-                    ResetCampID();
-                }
-            </div>
-            <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <!-- Facebook blog galleries //////////////////////////////////////////////////////////////////////////////////////////-->
-            <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <div id="linkedGalleries">
-                @foreach (var item in Model)
-                {
-                    if (item.EmbededFacebookAlbumLink != null && item.EmbededFacebookAlbumLink != " ")
-                    {
-                        <div class="individualGallery" id="@GetGalleryID("gallery")">
-                            <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")')"> &lt Back</a>
-                            <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")')">Back</a>
-                            <div class="galleryMain fbGallery">
-                                <div class="campDetails">
-                                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                                    <p> @Html.DisplayFor(modelItem => item.Description) </p>
-
-                                </div><!-- /campDetails -->
-                                @Html.Raw(item.EmbededFacebookAlbumLink);
-                            </div>
-                        </div>
-                        IncrementCampID();
-                    }
-                }
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-            <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <!-- Uploaded camp blogs /////////////////////////////////////////////////////////////////////////////////////////////-->
-            <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <div class="blogContainer" id="recentContainer">
-                @{
-                    List<string> dirs = new List<string>(); // Directories of camp albums.
-                    dirs.AddRange(System.IO.Directory.GetDirectories("wwwroot\\uploads\\camps\\"));
-
-                    foreach (var item in Model) // Loop all camps in db.
-                    {
-                        if (dirs.Contains("wwwroot\\uploads\\camps\\" + item.Id.ToString())) // Check if have uploaded album directory.
+                        else if (dirs.Contains("wwwroot\\uploads\\camps\\" + item.Id.ToString())) // Check if have uploaded album directory.
                         {
                             <div class="singleBlog">
                                 <div class="campContent">
@@ -238,52 +191,125 @@
                                         <p class="blogText">Starts at: @Html.DisplayFor(modelItem => item.CampStartTime)</p> <!-- Camp Description -->
                                         <p class="blogText">Ends at: @Html.DisplayFor(modelItem => item.CampEndTime)</p>
                                     </div>
-                                    <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID("gallery")'); getClass('@GetGalleryID("camp")')"> View Gallery </a>
+                                    <a href="#camps" class="btn blogLink" onclick="selectGallery(); gallerySelect('@GetGalleryID("gallery")'); getClass('@GetGalleryID("camp")');"> View Gallery </a>
                                 </div>
                             </div>
                         }
-                    }
+                        IncrementCampID();
+                    } // End of foreach.
+                    ResetCampID();
                 }
             </div>
-
-
-
             <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <!-- Uploaded camp galleries //////////////////////////////////////////////////////////////////////////////////////////-->
+            <!-- Facebook blog galleries //////////////////////////////////////////////////////////////////////////////////////////-->
             <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <div id="localGalleries">
-                @{
-                    ResetCampID();
-                    foreach (var item in Model) // Loop all camps in db and then create galleries for all camp album directories.
-                    { 
-                    
-                        string path = "wwwroot\\uploads\\camps\\" + item.Id.ToString();                    
-                        if (dirs.Contains(path)) // Check if have uploaded album directory.
+            <div id="galleryContainer">
+                @{ 
+                    foreach (var item in Model)
+                    {
+                        string path = "wwwroot\\uploads\\camps\\" + item.Id.ToString();
+
+                        if (item.EmbededFacebookAlbumLink != null && item.EmbededFacebookAlbumLink != " ")
                         {
-                            <div id="slideshow">
-                                <div id="slides">
-                                    <h1>TEST</h1>
-                                    @{
-                                        List<string> files = new List<string>();
+                            <div class="individualGallery" id="@GetGalleryID("gallery")">
+                                <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');"> &lt Back</a>
+                                <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');")">Back</a>
+                                <div class="galleryMain fbGallery">
+                                    <div class="campDetails">
+                                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                                        <p> @Html.DisplayFor(modelItem => item.Description) </p>
 
-                                        files.AddRange(System.IO.Directory.GetFiles(path));
-                                        for (int j = 0; j < files.Count; j++)
-                                        {
-                                            <img src="@files[j]" class="slideImage @GetGalleryID("camp")" />
-                                        }
-                                    }
+                                    </div><!-- /campDetails -->
+                                    @Html.Raw(item.EmbededFacebookAlbumLink);
                                 </div>
-                                <button id="left" onclick="iterate(-1); blurInput('left');"><img src="../imgs/prev.png"></button>
-                                <button id="right" onclick="iterate(1); blurInput('right');"><img src="../imgs/next.png"></button>
-                                <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</button>
                             </div>
-                            IncrementCampID();
-                        }                        
-                    }
-                    ResetCampID();
-                }
 
+                        }
+                        else if (dirs.Contains(path)) // Check if have uploaded album directory.
+                        {
+
+
+
+                                <div id="slideshow">
+                                <div id="slides">
+                                        @{
+
+
+                                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(path);
+
+                                                System.IO.FileInfo[] fi = di.GetFiles();
+
+
+                                                @*foreach (System.IO.FileInfo fiTemp in fi) {
+                                                    string fileSrc = "/uploads/camps/" + item.Id.ToString() + "/" + @fiTemp.Name;
+                                                    <img src="@fileSrc" class="slideImage @GetGalleryID("camp")" />
+                                                }*@
+                                           
+                                        }
+                                    </div>
+                                    <button id="left" onclick="iterate(-1); blurInput('left');"><img src="/img/prev.png"></button>
+                                    <button id="right" onclick="iterate(1); blurInput('right');"><img src="/img/next.png"></button>
+                                    <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</button>
+                                </div>
+
+
+
+
+                            <div class="individualGallery" id="@GetGalleryID("gallery")">
+                                <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');"> &lt Back</a>
+                                <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');">Back</a>
+
+
+                                <div class="galleryMain">
+                                    <div class="campDetails">
+                                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                                        <p> @Html.DisplayFor(modelItem => item.Description) </p>
+                                    </div> <!-- /campDetails -->
+
+                                    <div class="staticGallery">
+                                        @{
+                                            int xvar = 1;
+                                            foreach (System.IO.FileInfo fiTemp in fi)
+                                            {
+                                                string fileSrc = "/uploads/camps/" + item.Id.ToString() + "/" + @fiTemp.Name;
+                                                <a onclick="displayShow(@xvar);"> <img src="@fileSrc"></a>
+                                                xvar++;
+
+
+                                            }
+
+
+                                        }
+
+
+                                    </div> <!-- /staticGallery -->
+                                </div> <!-- /galleryMain -->
+
+                            </div> <!-- /individualGallery -->
+
+                            }
+
+                            IncrementCampID();
+                        }
+
+                        ResetCampID();
+                    }
+                
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
 
@@ -349,13 +375,12 @@
 
 <!-- Temp camp edit page button. -->
 <footer>
+    <div id="fbFooter">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="400" height="72" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFooterFrame"></iframe>
+        <p> Some more information</br> to do with help</br> or contact </br> or website developers... </p>
 
-        <div id = "fbFooter" >
-            <iframe src= "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width= "400" height= "72" style= "border:none;overflow:hidden" scrolling= "no" frameborder= "0" allowTransparency= "true" allow= "encrypted-media" class="fbFooterFrame"></iframe>
-            <p> Some more information</br> to do with help</br> or contact </br> or website developers... </p>
-
-        </div>
-        <button id = "adminAccess" onclick= "window.location.href='/camps'" > > Admin Access</button>
+    </div>
+    <button id="adminAccess" onclick="window.location.href='/camps'"> > Admin Access</button>
 </footer>
 
 <div id = "rawCampList" >

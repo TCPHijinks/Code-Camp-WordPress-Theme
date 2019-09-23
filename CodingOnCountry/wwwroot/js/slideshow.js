@@ -5,7 +5,7 @@ function displayShow(i){
     slideIndex = i;
     showSlide(slideIndex);
     var x = document.getElementById("slideshow");
-    x.style.display = 'block';
+    x.style.display = 'initial';
     
 }
 
@@ -24,9 +24,9 @@ function showSlide(n){
     if (n > x.length) {slideIndex = 1}
     if (n < 1) {slideIndex = x.length}
     for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";  
+      x[i].style.display = 'none';  
     }
-    x[slideIndex-1].style.display = "block"; 
+    x[slideIndex-1].style.display = 'initial'; 
 
 }
 
@@ -34,8 +34,16 @@ function blurInput(item) {
     document.getElementById(item).blur();
   }
 
+function hideSlides() {
+    var x = imageClass;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = 'none';
+    }
+}
+
 function closeShow() {
     var x = document.getElementById("slideshow");
     x.style.display = 'none';
+    hideSlides();
     
 }

@@ -20,6 +20,8 @@ button, button:hover {
     display: none;
 }
 
+
+
 #slides {
     position: fixed;
     width: 70vw;
