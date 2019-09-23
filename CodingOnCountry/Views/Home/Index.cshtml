@@ -208,7 +208,7 @@
                                         <p> @Html.DisplayFor(modelItem => item.Description) </p>
 
                                     </div><!-- /campDetails -->
-                                    <iframe src="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)" width="500" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="fbFrame"></iframe>
+                                    @Html.Raw(item.EmbededFacebookAlbumLink);
                                 </div>
                             </div>
                             IncrementCampID();
@@ -272,7 +272,7 @@
 <footer>
 
         <div id = "fbFooter" >
-            < iframe src= "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width= "400" height= "72" style= "border:none;overflow:hidden" scrolling= "no" frameborder= "0" allowTransparency= "true" allow= "encrypted-media" class="fbFooterFrame"></iframe>
+            <iframe src= "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTest-for-Uni-113133820057510%2F&tabs&width=400&height=70&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width= "400" height= "72" style= "border:none;overflow:hidden" scrolling= "no" frameborder= "0" allowTransparency= "true" allow= "encrypted-media" class="fbFooterFrame"></iframe>
             <p> Some more information</br> to do with help</br> or contact </br> or website developers... </p>
 
         </div>
