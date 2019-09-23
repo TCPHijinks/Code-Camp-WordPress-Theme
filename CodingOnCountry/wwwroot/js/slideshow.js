@@ -1,4 +1,5 @@
 var slideIndex = 1;
+var imageClass;
 
 function displayShow(i){
     slideIndex = i;
@@ -8,6 +9,9 @@ function displayShow(i){
     
 }
 
+function getClass(c){
+    imageClass = document.getElementsByClassName(c);
+}
 
 
 function iterate(n){
@@ -16,7 +20,7 @@ function iterate(n){
 
 function showSlide(n){
     var i;
-    var x = document.getElementsByClassName("slideImage");
+    var x = imageClass;
     if (n > x.length) {slideIndex = 1}
     if (n < 1) {slideIndex = x.length}
     for (i = 0; i < x.length; i++) {
