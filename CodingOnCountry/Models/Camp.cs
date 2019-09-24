@@ -12,10 +12,13 @@ namespace CodingOnCountry.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Camp Community")]
        
         public string CampCommunity { get; set; }
+        [Display(Name = "Camp Address")]
         public string CampAddress { get; set; }
         
+        [Display(Name = "Facebook Embed Link")]
         public string EmbededFacebookAlbumLink { get; set; }
 
         /*
@@ -31,6 +34,7 @@ namespace CodingOnCountry.Models
             return this.link;
         }
         */
+
         [Display(Name = "Camp Date")]
         [DataType(DataType.Date)]
         public DateTime CampDate { get; set; } = DateTime.Now;
@@ -41,7 +45,7 @@ namespace CodingOnCountry.Models
 
         [Display(Name = "Camp End Time")]
         [DataType(DataType.Time)]
-        public string CampEndTime { get; set; }
+        public DateTime CampEndTime { get; set; }
 
         
       

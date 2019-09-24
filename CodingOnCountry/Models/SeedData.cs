@@ -30,7 +30,7 @@ namespace CodingOnCountry.Models
                         EmbededFacebookAlbumLink = "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.113134773390748%26type%3D3&width=500",
                         CampDate = DateTime.Now.AddDays(-54).Date,
                         CampStartTime = DateTime.Now.AddDays(-54),
-                        CampEndTime = DateTime.Now.AddDays(-54.1).ToString()
+                        CampEndTime = DateTime.Now.AddDays(-54.1)
                     },
                     new Camp
                     {
@@ -42,7 +42,7 @@ namespace CodingOnCountry.Models
                         EmbededFacebookAlbumLink = "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.113138956723663%26type%3D3&width=500",
                         CampDate = DateTime.Now.AddDays(-24).Date,
                         CampStartTime = DateTime.Now.AddDays(-24),
-                        CampEndTime = DateTime.Now.AddDays(-24.1).ToString()
+                        CampEndTime = DateTime.Now.AddDays(-24.1)
                     },
                     new Camp
                     {
@@ -54,7 +54,7 @@ namespace CodingOnCountry.Models
                         EmbededFacebookAlbumLink = "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.117150296322529%26type%3D3&width=500",
                         CampDate = DateTime.Now.Date,
                         CampStartTime = DateTime.Now.AddHours(5),
-                        CampEndTime = DateTime.Now.AddHours(8).ToString()
+                        CampEndTime = DateTime.Now.AddHours(8)
                     }
                 ) ;
                 context.SaveChanges();

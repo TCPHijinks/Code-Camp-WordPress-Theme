@@ -3,6 +3,18 @@
 @{
     ViewData["Title"] = "Create";
 }
+<environment include="Development">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/modal.css" />
+    <link rel="stylesheet" href="../css/slideshow.css">
+
+    <script src="~/js/gallery.js"></script>
+    <script src="~/js/script.js"></script>
+    <script src="~/js/slideshow.js"></script>
+</environment>
 
 <h1>Create</h1>
 
@@ -53,13 +65,13 @@
                 <span asp-validation-for="CampEndTime" class="text-danger"></span>
             </div>
            
-                <div>
-                    <p>Upload one or more files using this form:</p>
-                    <input type="file" name="files" multiple />
+                <div class="fileUpload">
+                        <p>Upload one or more files using this form:</p>
+                        <input type="file" name="files" multiple />
                 </div>
 
                 <div>
-                    <input type="submit" value="Upload" />
+                    <input type="submit" value="Upload" class="btn btn-primary" />
                 </div>
             </form>
         
