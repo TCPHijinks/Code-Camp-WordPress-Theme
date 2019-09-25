@@ -7,19 +7,37 @@ button, button:hover {
     background: none;
     border: none;
     cursor: pointer;
+    
 }
 
 
 
 #slideshow {
     position: fixed;
+    background-color: black;
     background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
     z-index: 10000;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
     display: none;
 }
 
+#slideback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100000px;
+    height: 1000000px;
+    
+    background-color: black;
+}
+
+div .slideshow {
+    display: none;
+}
 
 
 #slides {
@@ -31,12 +49,11 @@ button, button:hover {
 
 }
 
-
 #slides img {
     object-fit: contain;
     max-width: 100%;
     max-height: 99%;
-    
+    margin: auto auto;
     
 }
 
@@ -81,6 +98,10 @@ button, button:hover {
 
     #slides{
         width: 100vw;
+        height: 100vh;
         left: 0;
+        top: 3px;
+        margin: auto auto;
+
     }
 }

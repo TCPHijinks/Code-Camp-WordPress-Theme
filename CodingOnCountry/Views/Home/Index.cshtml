@@ -13,6 +13,7 @@
 
         <script src="~/js/gallery.js"></script>
         <script src="~/js/script.js"></script>
+        <script src="~/js/jquery-3.4.1.min.js"></script>
         <script src="~/js/slideshow.js"></script>
     </environment>
 
@@ -204,7 +205,53 @@
             <!-- Facebook blog galleries //////////////////////////////////////////////////////////////////////////////////////////-->
             <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
             <div id="galleryContainer">
-                @{ 
+
+
+
+                <div id=slideshow>
+                    
+                    <div id="slides">
+                    @{
+
+                        foreach (var item in Model)
+                        {
+                            string path = "wwwroot\\uploads\\camps\\" + item.Id.ToString();
+
+                            if (dirs.Contains(path))
+                            {
+
+                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(path);
+
+                                System.IO.FileInfo[] fi = di.GetFiles();
+
+
+                                foreach (System.IO.FileInfo fiTemp in fi)
+                                {
+                                        string fileSrc = "/uploads/camps/" + item.Id.ToString() + "/" + @fiTemp.Name;
+                                        <img src="@fileSrc" class="slideImage @GetGalleryID("camp")" />
+                                    }
+                                }
+
+                                IncrementCampID();
+                            }
+
+                            ResetCampID();
+                        }
+                    </div>
+                    <button id="left" onclick="iterate(-1); blurInput('left');"><img src="/img/prev.png"></button>
+                    <button id="right" onclick="iterate(1); blurInput('right');"><img src="/img/next.png"></button>
+                    <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</button>
+                </div>
+
+
+
+
+
+
+
+
+
+                @{
                     foreach (var item in Model)
                     {
                         string path = "wwwroot\\uploads\\camps\\" + item.Id.ToString();
@@ -213,7 +260,7 @@
                         {
                             <div class="individualGallery" id="@GetGalleryID("gallery")">
                                 <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');"> &lt Back</a>
-                                <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');")">Back</a>
+                                <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');" )">Back</a>
                                 <div class="galleryMain fbGallery">
                                     <div class="campDetails">
                                         <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
@@ -228,33 +275,6 @@
                         else if (dirs.Contains(path)) // Check if have uploaded album directory.
                         {
 
-
-
-                                <div id="slideshow">
-                                <div id="slides">
-                                        @{
-
-
-                                                System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(path);
-
-                                                System.IO.FileInfo[] fi = di.GetFiles();
-
-
-                                                @*foreach (System.IO.FileInfo fiTemp in fi) {
-                                                    string fileSrc = "/uploads/camps/" + item.Id.ToString() + "/" + @fiTemp.Name;
-                                                    <img src="@fileSrc" class="slideImage @GetGalleryID("camp")" />
-                                                }*@
-                                           
-                                        }
-                                    </div>
-                                    <button id="left" onclick="iterate(-1); blurInput('left');"><img src="/img/prev.png"></button>
-                                    <button id="right" onclick="iterate(1); blurInput('right');"><img src="/img/next.png"></button>
-                                    <button id="closeShow" onclick="closeShow(); blurInput('closeShow');">CLOSE</button>
-                                </div>
-
-
-
-
                             <div class="individualGallery" id="@GetGalleryID("gallery")">
                                 <a href="#camps" class="mobileBack" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');"> &lt Back</a>
                                 <a href="#camps" class="baseButton backButton" onclick="revertGallery(); galleryDeselect('@GetGalleryID("gallery")');">Back</a>
@@ -268,6 +288,10 @@
 
                                     <div class="staticGallery">
                                         @{
+                                            System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(path);
+
+                                            System.IO.FileInfo[] fi = di.GetFiles();
+
                                             int xvar = 1;
                                             foreach (System.IO.FileInfo fiTemp in fi)
                                             {
@@ -287,14 +311,14 @@
 
                             </div> <!-- /individualGallery -->
 
-                            }
-
-                            IncrementCampID();
                         }
 
-                        ResetCampID();
+                        IncrementCampID();
                     }
-                
+
+                    ResetCampID();
+                }
+
             </div>
 
 
