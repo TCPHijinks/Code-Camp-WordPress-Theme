@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CautiousDev\\Desktop\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {}
+    "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CautiousDev\\Desktop\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {
+    "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CautiousDev\\Desktop\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
+        "projectUniqueName": "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
         "projectName": "CodingOnCountry",
-        "projectPath": "C:\\Users\\CautiousDev\\Desktop\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
+        "projectPath": "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
         "packagesPath": "C:\\Users\\CautiousDev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CautiousDev\\Desktop\\Capstone\\CodingOnCountry\\obj\\",
+        "outputPath": "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

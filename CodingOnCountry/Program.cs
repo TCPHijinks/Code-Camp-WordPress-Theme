@@ -12,7 +12,7 @@ namespace CodingOnCountry
     public class Program
     {
         public static void Main(string[] args)
-        {
+        {          
             var host = CreateWebHostBuilder(args).Build();
 
             using (var scope = host.Services.CreateScope())
@@ -22,13 +22,14 @@ namespace CodingOnCountry
                 try
                 {
                     var context = services.GetRequiredService<CodingOnCountryContext>();
-                    context.Database.Migrate();
-                    SeedData.Initialize(services);
+                     context.Database.Migrate();
+                     SeedData.Initialize(services);
                 }
                 catch (Exception ex)
-                {
+                {                   
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");
+                    Console.WriteLine(logger);
                 }
             }
 
