@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {}
+    "C:\\Users\\Peter\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {
+    "C:\\Users\\Peter\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
+        "projectUniqueName": "C:\\Users\\Peter\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
         "projectName": "CodingOnCountry",
-        "projectPath": "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
-        "packagesPath": "C:\\Users\\CautiousDev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CautiousDev\\Documents\\GitHub\\Capstone\\CodingOnCountry\\obj\\",
+        "projectPath": "C:\\Users\\Peter\\Documents\\GitHub\\Capstone\\CodingOnCountry\\CodingOnCountry.csproj",
+        "packagesPath": "C:\\Users\\Peter\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Peter\\Documents\\GitHub\\Capstone\\CodingOnCountry\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\CautiousDev\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Peter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,10 +61,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
