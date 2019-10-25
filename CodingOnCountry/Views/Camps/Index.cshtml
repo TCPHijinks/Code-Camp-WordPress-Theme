@@ -1,0 +1,94 @@
+﻿@model IEnumerable<CodingOnCountry.Models.Camp>
+
+@{
+    ViewData["Title"] = "Camp List";
+}
+
+<environment include="Development">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/style.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/modal.css" />
+    <link rel="stylesheet" href="~/css/slideshow.css">
+
+    <script src="~/js/gallery.js"></script>
+    <script src="~/js/script.js"></script>
+    <script src="~/js/slideshow.js"></script>
+</environment>
+
+<main>
+    <h1>[Admin View] Camp List</h1>
+    <!-- Temp return to homepage button. -->
+    <button onclick="window.location.href = '/'">Return to Homepage</button>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+</main>
+<section class="table">
+    <article class="tableContents">
+        <b>
+            @Html.DisplayNameFor(model => model.Name)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.Description)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.CampCommunity)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.CampAddress)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.EmbededFacebookAlbumLink)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.CampDate)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.CampStartTime)
+        </b>
+        <b>
+            @Html.DisplayNameFor(model => model.CampEndTime)
+        </b>
+        <b>
+            Settings
+        </b>
+    </article>
+    @foreach (var item in Model)
+    {
+        <article class="tableContents">
+            <span>
+                @Html.DisplayFor(modelItem => item.Name)
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item.Description)
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item.CampCommunity)
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item.CampAddress)
+            </span>
+            <span>
+                <a href="@Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)">
+                    @Html.DisplayFor(modelItem => item.EmbededFacebookAlbumLink)
+                </a>
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item.CampDate)
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item.CampStartTime)
+            </span>
+            <span>
+                @Html.DisplayFor(modelItem => item.CampEndTime)
+            </span>
+            <span class="controls">
+                <a title="Edit" asp-action="Edit" asp-route-id="@item.Id"><i class="material-icons">mode_edit</i></a>
+                <a title="Details" asp-action="Details" asp-route-id="@item.Id"><i class="material-icons">info</i></a>
+                <a title="Delete" asp-action="Delete" asp-route-id="@item.Id"><i class="material-icons">delete_forever</i></a>
+            </span>
+        </article>
+    }
+</section>
