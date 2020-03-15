@@ -9,3 +9,18 @@
     <?php wp_head();?>
 </head>
 <body> <!-- closing inside footer.php --> 
+
+<div class="header">
+    <div class="container">
+        <!-- Location for top navigation bar -->
+        <?php wp_nav_menu( 
+                array(
+                    // 'menu' => 'Top Bar' // Force select the menu.
+                    'theme_location' => 'top-menu',
+                    'menu_class' => 'top-bar',
+                    )
+                );
+            ?>
+    </div>    
+</div> 
+
