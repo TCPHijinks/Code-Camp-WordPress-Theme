@@ -37,6 +37,8 @@
     </div>
 
     <div>
+        <!-- Blog pages links show if blog contains page breaks/many pages -->
+        <h5> <?php wp_link_pages( ); ?> </h5>
         <!-- Default commenting system. Needs styling. -->
         <?php comments_template( ) ?>
     </div>

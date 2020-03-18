@@ -8,8 +8,8 @@
         <!-- Pagination - only show so many posts at once -->
         <?php 
             // Pagination pages.
-            //previous_posts_link();
-            //next_posts_link();
+            previous_posts_link();
+            next_posts_link();
         ?>
       
     </div>
