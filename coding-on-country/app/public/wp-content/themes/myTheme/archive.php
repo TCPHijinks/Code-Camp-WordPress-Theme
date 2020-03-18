@@ -5,8 +5,12 @@
         <?php get_template_part('includes/section','archive'); ?>   <!-- Loop that gens content -->
 
         <!-- Pagination - only show so many posts at once -->
-        <?php previous_posts_link() ?>
-        <?php next_posts_link() ?>
+        <?php 
+            // Pagination pages.
+            //previous_posts_link();
+            //next_posts_link();
+        ?>
+      
     </div>
 </div>
       
