@@ -39,3 +39,13 @@ register_nav_menus(
         'footer-menu' => 'Footer Menu Location',
     )
 );
+
+
+
+
+
+
+// Custom Image Sizes - Crops images down to closest size 
+add_image_size("blog-large", 800, 400, true); // If size > 800x400, cut & ignore aspect ratio for consistent sizes.
+add_image_size("blog-small", 300, 200, true); // If size > 800x400, cut & ignore aspect ratio for consistent sizes.
+// If "fale"/no hard-crop -- finds closest aspect ratio inside size constraints.
