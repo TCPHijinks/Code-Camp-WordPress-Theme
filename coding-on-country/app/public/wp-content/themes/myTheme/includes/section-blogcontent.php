@@ -36,7 +36,11 @@
                 <?php endforeach; ?>
     </div>
 
-
+    <div>
+        <!-- Default commenting system. Needs styling. -->
+        <?php comments_template( ) ?>
+    </div>
+    
 
 
 
