@@ -2,6 +2,7 @@
 
 <div class="page-wrap">
     <div class="container">  
+    <h1><?php echo single_tag_title( ); ?></h1>
         <?php get_template_part('includes/section','archive'); ?>   <!-- Loop that gens content -->
 
         <!-- Pagination - only show so many posts at once -->
