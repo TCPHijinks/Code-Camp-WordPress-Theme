@@ -2,15 +2,9 @@
 <?php if( have_posts() ): 
     while( have_posts() ): the_post(); // If have post, while have, render post
 ?>
-    <p><?php echo get_the_date('d/m/Y h:i:s  -- l jS F, Y'); ?></p>
     <?php the_content(); // Render the content.?>
 
-    <!-- Show author full name. -->
-    <?php 
-        $fname = get_the_author_meta( 'first_name'); 
-        $lname = get_the_author_meta( 'last_name'); 
-        $msg = $fname . ' ' . $lname; // Use echo to make appear on page.         
-    ?>
+   
 
     <!-- Show post tags as <a> links. -->
     <div>
