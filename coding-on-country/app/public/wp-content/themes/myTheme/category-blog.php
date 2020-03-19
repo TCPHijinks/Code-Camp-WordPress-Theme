@@ -7,8 +7,8 @@
         <section class="row">
         <!-- Widget Sidebar -->
         <div class="col-lg-3">
-            <?php if( is_active_sidebar( 'page-sidebar' )):?>
-               <?php dynamic_sidebar( 'page-sidebar' ); ?>
+            <?php if( is_active_sidebar( 'blog-sidebar' )):?>
+               <?php dynamic_sidebar( 'blog-sidebar' ); ?>
             <?php endif; ?>
         </div>
 
