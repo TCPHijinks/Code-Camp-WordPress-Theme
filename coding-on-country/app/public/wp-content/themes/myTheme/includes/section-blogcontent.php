@@ -5,12 +5,14 @@
     <p><?php echo get_the_date('d/m/Y h:i:s  -- l jS F, Y'); ?></p>
     <?php the_content(); // Render the content.?>
 
+    <!-- Show author full name. -->
     <?php 
         $fname = get_the_author_meta( 'first_name'); 
         $lname = get_the_author_meta( 'last_name'); 
         $msg = $fname . ' ' . $lname; // Use echo to make appear on page.         
     ?>
 
+    <!-- Show post tags as <a> links. -->
     <div>
         <?php    
             $tags = get_the_tags( ); // Get all post tags.
@@ -24,6 +26,7 @@
     </div>
     
    
+    <!-- Show categories as <a> links. -->
     <div>
         <?php 
                 $categories = get_the_category();
@@ -36,9 +39,12 @@
                 <?php endforeach; ?>
     </div>
 
+    <!-- Show navigation buttons for multi-page posts. -->
     <div>
         <!-- Blog pages links show if blog contains page breaks/many pages -->
         <h5> <?php wp_link_pages( ); ?> </h5>
+        
+        <!-- *********** -->
         <!-- Default commenting system. Needs styling. -->
         <?php comments_template( ) ?>
     </div>

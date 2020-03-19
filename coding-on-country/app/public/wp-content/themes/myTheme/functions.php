@@ -28,7 +28,7 @@ add_action( 'wp_enqueue_scripts', 'load_js' );
 // Theme Options.
 add_theme_support('menus');
 add_theme_support( 'post-thumbnails' );
-
+add_theme_support( 'widgets' );
 
 // Menus.
 register_nav_menus(  
@@ -46,6 +46,39 @@ register_nav_menus(
 
 
 // Custom Image Sizes - Crops images down to closest size 
+// If "fale"/no hard-crop -- finds closest aspect ratio inside size constraints.
 add_image_size("blog-large", 800, 400, true); // If size > 800x400, cut & ignore aspect ratio for consistent sizes.
 add_image_size("blog-small", 300, 200, true); // If size > 800x400, cut & ignore aspect ratio for consistent sizes.
-// If "fale"/no hard-crop -- finds closest aspect ratio inside size constraints.
+
+
+
+
+
+// Register Sidebars for Widgets
+function my_sidebars()
+{
+    // Normal page sidebar.
+    register_sidebar( 
+        array(
+            'name'=> 'Page Sidebar',
+            'id' => 'page-sidebar',
+            'before_widget' => '<div class="widget-item">',
+            'after_widget' => '</div>',
+            'before_title' => '<h4 class="widget-title">',
+            'after_title' => '</h4>',
+        )
+    );
+
+    // Blog specific sidebar.
+    register_sidebar( 
+        array(
+            'name'=> 'Blog Sidebar',
+            'id' => 'blog-sidebar',
+            'before_widget' => '<div class=”widget-item”>',
+            'after_widget' => '</div>',
+            'before_title' => '<h4 class="widget-title">',
+            'after_title' => '</h4>',
+        )
+    );
+}
+add_action('widgets_init', 'my_sidebars');
