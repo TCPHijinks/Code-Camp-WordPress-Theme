@@ -1,4 +1,6 @@
-<?php get_header(); // Load secondary header by calling WP func w/ that param ?> 
+
+<!-- THIS TEMPLATE LOADS THE POST CONTENT -->
+<?php get_header(); ?> 
 
 <div class="page-wrap">
     <div class="container">  

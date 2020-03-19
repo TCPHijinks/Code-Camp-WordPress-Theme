@@ -4,17 +4,18 @@
 <div class="container">  
 <section class="row">
    
-    <div class="col-lg-9">
-        <h1><?php echo single_tag_title( ); ?></h1>
-            <?php get_template_part('includes/section','archive'); ?>   <!-- Loop that gens content -->
+    <h1>Search Results for <i><?php echo get_search_query();?></i> 
+        in <i><?php echo single_tag_title();?>.</i></h1>
+   
+        <?php get_template_part('includes/section','searchresults'); ?>   <!-- Loop that gens content -->
 
-            <!-- Pagination - only show so many posts at once -->
-            <?php 
-                // Pagination pages.
-                previous_posts_link();
-                next_posts_link();
-            ?>
-    </div>
+    <!-- Pagination - only show so many posts at once -->
+    <?php 
+        // Pagination pages.
+        previous_posts_link();
+        next_posts_link();
+    ?>
+    
 </div>
 </div>
       
