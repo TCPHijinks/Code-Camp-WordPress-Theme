@@ -82,3 +82,48 @@ function my_sidebars()
     );
 }
 add_action('widgets_init', 'my_sidebars');
+
+
+
+function my_first_post_test_type()
+{
+
+    $args = array(
+        'labels' => array(
+            'name' => 'Cars',
+            'singular_name' => 'Car',
+        ),
+        'hierarchical' => true, // Set false to make like a post.
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-tickets-alt',
+        'supports' => array('title', 'editor', 'thumbnail'),
+        //'rewrite' => array('slug' => 'test-url-4-cars'),
+    );
+
+    register_post_type( 'cars_test', $args );
+
+}
+add_action( 'init', 'my_first_post_test_type' );
+
+
+
+
+
+function my_first_taxonomy()
+{
+   
+    $args = array(
+        'labels' => array(
+            'name' => 'Brands',
+            'singular_name' => 'Brand',
+        ),
+        'public' => true,
+        'hierarchical' => false, // If true, act more like a category. Otherwise similar to tag.
+    );
+
+
+    register_taxonomy( 'brands', array('cars_test'), $args);
+
+}
+add_action( 'init', 'my_first_taxonomy' );
