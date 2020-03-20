@@ -99,6 +99,7 @@ function my_first_post_test_type()
         'menu_icon' => 'dashicons-tickets-alt',
         'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
         //'rewrite' => array('slug' => 'test-url-4-cars'),
+        'show_in_rest' => true,
     );
 
     register_post_type( 'cars_test', $args );

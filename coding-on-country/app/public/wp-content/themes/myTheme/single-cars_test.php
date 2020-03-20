@@ -25,9 +25,9 @@
             <div class="col-6">
             
                 <ul>
-                    <li>Colour: <?php echo get_post_meta($post->ID, 'Colour', true) ?></li>
-                    <?php if(get_post_meta($post->ID, 'Rego', true)): ?> 
-                        <li>Rego: <?php echo get_post_meta($post->ID, 'Rego', true); ?></li>
+                    <li>Colour: <?php the_field('colour'); ?></li>
+                    <?php if(get_post_meta($post->ID, 'rating', true)): ?> 
+                        <li>Rating: <?php the_field('rating'); ?></li>
                     <?php endif; ?>
                 </ul>
 
