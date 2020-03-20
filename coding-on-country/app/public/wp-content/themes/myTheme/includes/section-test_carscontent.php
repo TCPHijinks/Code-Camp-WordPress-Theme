@@ -1,4 +1,4 @@
-<!-- BLOG TEMPLATE THAT DISPLAYS BLOG CONTENT IN UNIQUE WAY -->
+<!-- BLOG TEMPLATE THAT DISPLAYS THE SINGLE POST's CONTENT IN UNIQUE WAY -->
 <?php if( have_posts() ): 
     while( have_posts() ): the_post(); // If have post, while have, render post
 ?>
@@ -18,8 +18,7 @@
                         <?php echo $tag->name; ?>
                     </a>
                     
-                <?php endforeach; endif;?>
-   
+                <?php endforeach; endif;?>   
     </div>
     
    

@@ -41,8 +41,18 @@ register_nav_menus(
 );
 
 
+// Sets new excerpt length.
+add_filter( 'excerpt_length', function($length) {
+    return 20;
+} );
+   
 
-
+function prefix_wcount(){
+    ob_start();
+    the_content();
+    $content = ob_get_clean();
+    return sizeof(explode(" ", $content));
+}
 
 
 // Custom Image Sizes - Crops images down to closest size 
@@ -128,3 +138,31 @@ function my_first_taxonomy()
 
 }
 add_action( 'init', 'my_first_taxonomy' );
+
+
+function camp_post_type()
+{
+    $args = array(
+        'labels' => array(
+            'name' => 'Camps',
+            'singular_name' => 'Camp',
+        ),
+        'hierarchical' => true, // Set false to make like a post.
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-tickets-alt',
+        'supports' => array('title', 'editor', 'comments','thumbnail', 'custom-fields'),
+        //'rewrite' => array('slug' => 'test-url-4-cars'),
+        'show_in_rest' => true,
+    );
+
+    register_post_type( 'camps', $args );
+}
+add_action( 'init', 'camp_post_type' );
+
+
+// Allow Advanced Custom Fields Access to Google API
+function my_acf_init() {
+    acf_update_setting('google_api_key', 'AIzaSyBlnbjtq5JcUKwC3ptBdc9PT6H_YxOU35A');
+}
+add_action('acf/init', 'my_acf_init');

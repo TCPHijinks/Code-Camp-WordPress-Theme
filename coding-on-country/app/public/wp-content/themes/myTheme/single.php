@@ -4,7 +4,7 @@
 
 <div class="page-wrap">
     <div class="container">  
-
+ 
         <?php if(has_post_thumbnail( )):?>
             <div>HAS A IMAGE FEATURED</div>
             <!-- Load large image for post (see functions.php) -->
