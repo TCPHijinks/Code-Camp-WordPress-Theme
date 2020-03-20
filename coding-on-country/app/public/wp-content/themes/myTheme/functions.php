@@ -97,7 +97,7 @@ function my_first_post_test_type()
         'public' => true,
         'has_archive' => true,
         'menu_icon' => 'dashicons-tickets-alt',
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
         //'rewrite' => array('slug' => 'test-url-4-cars'),
     );
 

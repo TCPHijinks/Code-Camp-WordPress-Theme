@@ -15,17 +15,24 @@
 
         
         
-<div class="row">
-        
+        <section class="row">
+            
             <div class="col-6">
                 <?php get_template_part('includes/section','test_carscontent'); ?>
                 <?php wp_link_pages();?>
             </div>
 
             <div class="col-6">
-            <b> &&&&&&&&&&&&&&&&&&&</b>
+            
+                <ul>
+                    <li>Colour: <?php echo get_post_meta($post->ID, 'Colour', true) ?></li>
+                    <?php if(get_post_meta($post->ID, 'Rego', true)): ?> 
+                        <li>Rego: <?php echo get_post_meta($post->ID, 'Rego', true); ?></li>
+                    <?php endif; ?>
+                </ul>
+
             </div>
-        </div>
+        </section>
 
                   
    
