@@ -1,4 +1,7 @@
-<?php $default_thumbnail = 'http://coding-on-country.local/wp-content/uploads/2020/03/56211322-seamless-concrete-texture-gray-background.jpg'; ?>
+<?php 
+    $default_thumbnail = 'http://coding-on-country.local/wp-content/uploads/2020/03/56211322-seamless-concrete-texture-gray-background.jpg'; 
+    $words_per_min = 200;
+?>
 
 
 
@@ -13,7 +16,7 @@
     $args = array( 
         'post_type' => 'camps',
         'orderby' => 'ASC',
-        'posts_per_page'=>-1
+        'posts_per_page'=>-1 // Ignore page limit & get all.
     ); 
     $query = new WP_Query( $args );
     $posts = $query->posts;
@@ -54,7 +57,12 @@
                         <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href = '<?php the_permalink();?>';">View</button>
                     </div>
 
-                    <?php $readtime = round( (prefix_wcount() % 200) / 60 ); // Calculate read time assuming 200 words a min. ?>
+                    <?php 
+                        $postcontent = get_post_field( 'post_content', $post->ID );
+                        $wordcount = str_word_count( strip_tags( $postcontent ) );
+                        
+                        $readtime = round( $wordcount / $words_per_min ); 
+                    ?>
                     <small class="text-muted"><?php echo $readtime ?> mins</small>
                 </div>
                 </div>
@@ -126,8 +134,13 @@
                     <div class="btn-group">                    
                         <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href = '<?php the_permalink();?>';">View</button>
                     </div>
-
-                    <?php $readtime = round( (prefix_wcount() % 200) / 60 ); // Calculate read time assuming 200 words a min. ?>
+                    <?php 
+                        $postcontent = get_post_field( 'post_content', $post->ID );
+                        $wordcount = str_word_count( strip_tags( $postcontent ) );
+                        
+                        $readtime = round( $wordcount / $words_per_min ); 
+                    ?>
+                    
                     <small class="text-muted"><?php echo $readtime ?> mins</small>
                 </div>
                 </div>
