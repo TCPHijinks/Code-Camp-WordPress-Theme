@@ -31,7 +31,8 @@
                 // Get featured thumbnail or set to default if none.
                 $thumbnail_url = '';
                 if( has_post_thumbnail() ){                
-                    $thumbnail_url = the_post_thumbnail_url('blog-small');
+                    $imageid = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'blog-small' );
+                    $thumbnail_url = $imageid['0'];
                 } else {
                     // Default thumbnail.
                     $thumbnail_url = $default_thumbnail;
@@ -109,7 +110,8 @@
                 // Get featured thumbnail or set to default if none.
                 $thumbnail_url = '';
                 if( has_post_thumbnail() ){                
-                    $thumbnail_url = the_post_thumbnail_url('blog-small');
+                    $imageid = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'blog-small' );
+                    $thumbnail_url = $imageid['0'];
                 } else {
                     // Default thumbnail.
                     $thumbnail_url = $default_thumbnail;
