@@ -45,6 +45,21 @@ register_nav_menus(
 add_filter( 'excerpt_length', function($length) {
     return 20;
 } );
+
+
+function get_excerpt($limit, $source = null){
+
+    $excerpt = $source == "content" ? get_the_content() : get_the_excerpt();
+    $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
+    $excerpt = strip_shortcodes($excerpt);
+    $excerpt = strip_tags($excerpt);
+    $excerpt = substr($excerpt, 0, $limit);
+    $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+    $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
+    $excerpt = $excerpt.'... <a href="'.get_permalink($post->ID).'">more</a>';
+    return $excerpt;
+}
+
    
 
 function prefix_wcount(){
@@ -138,6 +153,8 @@ function my_first_taxonomy()
 
 }
 add_action( 'init', 'my_first_taxonomy' );
+
+
 
 
 function camp_post_type()
