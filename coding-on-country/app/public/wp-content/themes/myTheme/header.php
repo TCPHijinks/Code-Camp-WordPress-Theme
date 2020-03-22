@@ -12,7 +12,7 @@
 
 
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark fixed-top bg-dark">
 <a class="navbar-brand" href="<?php bloginfo('url')?>"><?php bloginfo('name')?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,8 +24,7 @@
             array(
                 // 'menu' => 'Top Bar' // Force select the menu.
                 'theme_location' => 'top-menu',
-                'menu_class' => 'decnav',
-                
+                'menu_class' => 'decnav',                
                 'depth' => 4,
                 'walker' => new wp_bootstrap_navwalker()
                 )
