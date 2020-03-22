@@ -21,7 +21,8 @@
                 array(
                     // 'menu' => 'Top Bar' // Force select the menu.
                     'theme_location' => 'top-menu',
-                    'menu_class' => 'nav',
+                    'menu_class' => 'decnav',
+                   
                     'depth' => 4,
                     'walker' => new wp_bootstrap_navwalker()
                     )
