@@ -172,7 +172,7 @@
     foreach($posts as $post):
         // Continue if admin set a camp date (prevent error).
         if(get_post_meta($post->ID, 'campdatetime', true)):  
-                       
+                
             // Render camp badge if camp's datetime is after now.
             if( (double)get_field('campdatetime') < (double)date("YmdHis")):
                 
