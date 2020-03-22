@@ -103,16 +103,6 @@
                 if((double)$days > 0) { ($remaining .= $days.' days, '); }
                 if((double)$hours > 0) { ($remaining .= $hours.' hours, '); }
                 if((double)$minutes > 0) { ($remaining .= $minutes.' minutes.'); }
-                
-              
-              
-
-
-
-
-                
-                
-                
                 ?>
 
 

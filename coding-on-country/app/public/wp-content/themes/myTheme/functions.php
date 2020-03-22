@@ -30,6 +30,11 @@ add_theme_support('menus');
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'widgets' );
 
+
+ // Register custom navigation walker
+ require_once('wp_bootstrap_navwalker.php');
+
+
 // Menus.
 register_nav_menus(  
     // id => name its called.
