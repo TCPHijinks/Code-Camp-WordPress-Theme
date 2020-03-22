@@ -10,25 +10,30 @@
 </head>
 <body> <!-- closing inside footer.php --> 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+
+
+<nav class="navbar navbar-dark bg-dark">
+<a class="navbar-brand" href="<?php bloginfo('url')?>"><?php bloginfo('name')?></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="navbar-collapse justify-content-md-center collapse" id="navbarsExample08" style="">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarsExample01">
+        <ul class="navbar-nav mr-auto">
         <?php wp_nav_menu( 
-                array(
-                    // 'menu' => 'Top Bar' // Force select the menu.
-                    'theme_location' => 'top-menu',
-                    'menu_class' => 'decnav',
-                   
-                    'depth' => 4,
-                    'walker' => new wp_bootstrap_navwalker()
-                    )
-                );
-               
-            ?>          
+            array(
+                // 'menu' => 'Top Bar' // Force select the menu.
+                'theme_location' => 'top-menu',
+                'menu_class' => 'decnav',
+                
+                'depth' => 4,
+                'walker' => new wp_bootstrap_navwalker()
+                )
+            );            
+        ?>    
         </ul>
+        <form class="form-inline my-2 my-md-0">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
       </div>
     </nav>
