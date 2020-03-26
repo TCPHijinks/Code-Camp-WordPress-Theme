@@ -162,7 +162,7 @@ add_action( 'init', 'my_first_taxonomy' );
 
 
 
-function camp_post_type()
+function my_camp_post_type()
 {
     $args = array(
         'labels' => array(
@@ -180,7 +180,37 @@ function camp_post_type()
 
     register_post_type( 'camps', $args );
 }
-add_action( 'init', 'camp_post_type' );
+add_action( 'init', 'my_camp_post_type' );
+
+
+
+
+
+function my_code_challenge_post_type()
+{
+
+    $args = array(
+        'labels' => array(
+            'name' => 'Code Challenges',
+            'singular_name' => 'Code Challenge',
+        ),
+        'hierarchical' => true, // Set false to make like a post.
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-buddicons-activity',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        //'rewrite' => array('slug' => 'test-url-4-cars'),
+        'show_in_rest' => true,
+    );
+
+    register_post_type( 'challenges', $args );
+
+}
+add_action( 'init', 'my_code_challenge_post_type' );
+
+
+
+
 
 
 // Allow Advanced Custom Fields Access to Google API
