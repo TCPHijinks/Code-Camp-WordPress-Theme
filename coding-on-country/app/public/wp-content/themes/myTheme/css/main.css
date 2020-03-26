@@ -1,5 +1,7 @@
 body {
   padding-bottom: 20px;
+  background: url("../images/email-pattern.png") fixed;
+  min-height: 100vh !important;
 }
 
 .navbar {
@@ -29,4 +31,44 @@ footer p {
 body {
   min-height: 75rem;
   padding-top: 4.5rem;
+}
+
+
+.container{
+  padding: 10px;
+  margin: 0 auto;
+
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.single-page-format {
+  height: 100vh;
+  width: 100%;
+  margin: 20px 0;
+
+}
+
+.camp-section {
+  height: 100vh;
+}
+
+.collapse {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
+  width: 100vw;
+}
+
+.collapse a {
+  color: white ;
+  padding: 10px 20px;
+  margin: 10;
+}
+
+.collapse a:hover {
+  color: grey ;
+  cursor: pointer;
 }

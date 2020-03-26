@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
     
+    
     <?php wp_head();?>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body> <!-- closing inside footer.php --> 
 
@@ -19,20 +22,23 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
-        <ul class="navbar-nav mr-auto">
-        <?php wp_nav_menu( 
-            array(
-                // 'menu' => 'Top Bar' // Force select the menu.
-                'theme_location' => 'top-menu',
-                'menu_class' => 'decnav',                
-                'depth' => 4,
-                'walker' => new wp_bootstrap_navwalker()
-                )
-            );            
-        ?>    
-        </ul>
-        <form class="form-inline my-2 my-md-0">
+        <a href="#upcoming-camps">Upcoming Camps</a>
+        <a href="#past-camps">Past Camps</a>
+        <?php
+        $pages = get_pages(); 
+                foreach ($pages as $page_data) {
+                  
+                    $content = apply_filters('the_content', $page_data->post_content); 
+                    $title = $page_data->post_title; 
+                    echo "<a href=\"#$title\">$title</a>"; 
+                    
+                }
+                
+                
+                ?>   
+        
+        <!-- <form class="form-inline my-2 my-md-0">
           <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
+        </form> -->
       </div>
     </nav>
