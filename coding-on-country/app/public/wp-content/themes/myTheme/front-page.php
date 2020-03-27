@@ -16,7 +16,7 @@
 
                 <div class= "adminPost">
                 <a href="<?php echo get_permalink($singleAPost); ?>">
-                <?php echo get_the_post_thumbnail($singleAPost,'thumbnail', array( 'class' => 'postThumb' ) ); ?>
+                <?php echo get_the_post_thumbnail($singleAPost, 'full' , array( 'class' => 'postThumb' ) ); ?>
                 
                     <div class="aPostText">
                     <!-- Render Homepage title -->
