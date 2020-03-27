@@ -11,7 +11,7 @@
 <!-- ********************************** -->
 <div class= "camp-section" id = "upcoming-camps">
     
-    <h2 class="d-flex justify-content-center"><br><br><br>Upcoming Camps</h2>
+    <h2 class="d-flex justify-content-center"><br><br><br>Upcoming Camps<br><br><br></h2>
     <div class="row">   
         <!-- Render preview badges of past camp custom posts. -->
         <?php   
@@ -163,7 +163,7 @@
 <!-- ********************************** -->
 
 <div class= "camp-section" id="past-camps">
-    <h2 class="d-flex justify-content-center"><br><br><br>Past Camps</h2>
+    <h2 class="d-flex justify-content-center"><br><br><br>Past Camps<br><br><br></h2>
     <div class="row">   
         <!-- Render preview badges of past camp custom posts. -->
         <?php 

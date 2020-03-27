@@ -4,13 +4,33 @@
     <div class="container">  
 
         <div class="row">
-            <div class="col-xl-12">   
+            <div class="col-xl-12 adminPosts">   
 
-                <!-- Render Homepage title -->
-                <h1><?php the_title();?></h1></h1>
+                <?php 
 
-                <!-- Render Homepage content -->
-                <?php get_template_part('includes/section','content'); ?>  
+                    $adminPosts = get_posts();
+                    foreach ($adminPosts as $singleAPost){
+                
+                
+                ?>
+
+                <div class= "adminPost">
+                <a href="<?php echo get_permalink($singleAPost); ?>">
+                <?php echo get_the_post_thumbnail($singleAPost,'thumbnail', array( 'class' => 'postThumb' ) ); ?>
+                
+                    <div class="aPostText">
+                    <!-- Render Homepage title -->
+                        <h4>
+                        <?php   echo $singleAPost->post_title;  ?></h4>
+
+                        <!-- Render Homepage content -->
+                        <p><?php echo $singleAPost->post_content;?></p>
+                    </div>
+                    </a>
+                </div> <!-- end adminPost div -->
+
+
+                <?php } ?>  
 
                 
 

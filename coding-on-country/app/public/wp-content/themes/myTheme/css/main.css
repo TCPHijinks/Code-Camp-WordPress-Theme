@@ -35,25 +35,27 @@ body {
 
 
 .container{
-  padding: 10px;
+  padding:30px;
   margin: 0 auto;
 
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.7);
+
 }
 
 .single-page-format {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   margin: 20px 0;
 
 }
 
 .camp-section {
-  height: 100vh;
+  min-height: 100vh;
+
 }
 
-.collapse {
+.collapse , .collapsing {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -62,13 +64,75 @@ body {
   width: 100vw;
 }
 
-.collapse a {
+
+
+.collapse a , .collapsing a {
   color: white ;
   padding: 10px 20px;
   margin: 10;
 }
 
+.collapsing a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .collapse a:hover {
+  text-decoration: none;
   color: grey ;
   cursor: pointer;
+}
+
+.adminPosts {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+}
+
+.adminPost {
+  width: 24%;
+  height: 90%;
+  margin: 0 1%;
+  background:  url("../images/email-pattern.png") ;
+  position: relative;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+.aPostText , .postThumb{
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}
+
+.aPostText {
+  padding: 5px;
+  background-color: rgba(255,255,255,0.7);
+  width: 100%;
+  min-height: 100%;
+}
+
+.aPostText:hover {
+  background-color: rgba(255,255,255,0.3);
+}
+
+.adminPost a {
+  color: grey;
+}
+
+.adminPost a:hover {
+  color: rgba(100, 100, 100,0.5);
+}
+
+.adminPost p {
+  font-size: 9pt;
+}
+
+.postThumb {
+  min-width: 100%;
+  min-height: 100%;
+  
 }
