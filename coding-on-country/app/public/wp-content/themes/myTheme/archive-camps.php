@@ -1,4 +1,4 @@
-<?php get_header(); // Load secondary header by calling WP func w/ that param ?> 
+<?php get_header('secondary'); // Load secondary header by calling WP func w/ that param ?> 
 <h2>ARCHVIE I JUST DID!</h2>
 <div class="page-wrap">
 <div class="container">  
@@ -11,7 +11,7 @@
     </div>
     <div class="col-lg-9">
         <h1><marquee>CARS 4 SALE 2! ?</marquee></h1>
-        <?php get_template_part('includes/section','archive'); ?>   <!-- Loop that gens content -->
+       
 
             <!-- Pagination - only show so many posts at once -->
             <?php 
