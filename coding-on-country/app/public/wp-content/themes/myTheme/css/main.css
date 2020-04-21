@@ -172,3 +172,10 @@ textarea:focus {
 #respond .comment-form-author {
   display: none;
 }
+
+/*
+* Star rating for quests/challenges
+*/
+.checked {
+  color: orange;
+}

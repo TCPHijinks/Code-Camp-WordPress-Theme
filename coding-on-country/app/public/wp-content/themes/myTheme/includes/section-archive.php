@@ -111,7 +111,9 @@
                     <div class="col-md-4">
                     <div class="card mb-4 box-shadow">                    
                     <!-- Card Image -->                
-                    <img class="card-img-top" src="<?php echo $thumbnail_url ?>" alt="<?php the_title();?>">
+                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+                        alt="<?php the_title();?>">
+                    </a>    
                         
                 
                     
@@ -196,9 +198,9 @@
                     <div class="col-md-4">
                     <div class="card mb-4 box-shadow">                    
                     <!-- Card Image -->
-                    <img class="card-img-top" src="<?php echo $thumbnail_url ?>" 
-                    
-                    alt="<?php the_title();?>">
+                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+                        alt="<?php the_title();?>">
+                    </a>
 
                     <!-- Card Contents -->
                     <div class="card-body">
@@ -208,7 +210,7 @@
                         </p>
 
                         <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">                    
+                        <div class="btn-group" >                    
                             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href = '<?php the_permalink();?>';">View</button>
                         </div>
                         <?php 
@@ -230,6 +232,100 @@
 </div> <!-- end camp section -->
 <!-- ********************************** -->
 <!-- ********************************** -->
+
+
+
+<br/><br/><br/><br/>
+
+<!-- ********************************** -->
+<!--      Render Code Challenge Badges     -->
+<!-- ********************************** -->
+
+<div class= "camp-section" id="past-camps">
+    <h2 class="d-flex justify-content-center"><br><br><br>Code Challenges<br><br><br></h2>
+    
+  
+    <div class="row">   
+        <!-- Render preview badges of past camp custom posts. -->
+        <?php 
+        $args = array( 
+            'post_type' => 'challenges',
+            'orderby' => 'ASC',
+            'posts_per_page'=>-1
+        ); 
+        $query = new WP_Query( $args );
+        $posts = $query->posts;
+
+        foreach($posts as $post):
+            // Continue if admin set a difficulty (prevent error).
+            if(get_post_meta($post->ID, 'difficulty', true)):  
+                    
+                // Render camp badge if camp's datetime is after now.
+             //   if( (double)get_field('campdatetime') < (double)date("YmdHis")):
+                    
+                    // Get featured thumbnail or set to default if none.
+                    $thumbnail_url = '';
+                    if( has_post_thumbnail() ){                
+                        $imageid = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'blog-small' );
+                        $thumbnail_url = $imageid['0'];
+                    } else {
+                        // Default thumbnail.
+                        $thumbnail_url = $default_thumbnail;
+                    }?>
+
+
+                    <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">                    
+                    <!-- Card Image -->
+                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+                        alt="<?php the_title();?>">
+                    </a>
+
+                    <!-- Card Contents -->
+                    <div class="card-body">
+                        <p class="card-text">
+                        <b><?php the_title(); ?></b>
+                        <br/>
+                        <?php                      
+                            for ($i=0; $i<5; $i++) {
+                                if( (int)get_field('difficulty') > $i ){
+                                    ?>
+                                    <span class="dashicons dashicons-star-filled checked"></span>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <span class="dashicons dashicons-star-filled"></span>
+                                    <?php
+
+                                }
+                            }
+                        ?>
+
+                        
+                        <?php the_excerpt() ?>
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                                          
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-block" onclick="window.location.href = '<?php the_permalink();?>';">View Code Challenge</button>
+                        
+                        <?php 
+                            $postcontent = get_post_field( 'post_content', $post->ID );
+                        ?>
+                        
+                       
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+            <?php endif; ?>
+        <?php endforeach; ?>       
+    </div>
+
+</div> <!-- end camp section -->
+<!-- ********************************** -->
+<!-- ********************************** -->
+
 
 
 

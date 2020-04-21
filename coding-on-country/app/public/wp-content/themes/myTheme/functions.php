@@ -176,6 +176,7 @@ function my_camp_post_type()
         'supports' => array('title', 'editor', 'comments','thumbnail', 'custom-fields'),
         //'rewrite' => array('slug' => 'test-url-4-cars'),
         'show_in_rest' => true,
+        'dashicons-admin-media',
     );
 
     register_post_type( 'camps', $args );
@@ -250,3 +251,10 @@ function my_acf_init() {
     acf_update_setting('google_api_key', 'AIzaSyBlnbjtq5JcUKwC3ptBdc9PT6H_YxOU35A');
 }
 add_action('acf/init', 'my_acf_init');
+
+
+// Enable dashicons on the frontend.
+add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
+function load_dashicons_front_end() {
+    wp_enqueue_style( 'dashicons' );
+}
