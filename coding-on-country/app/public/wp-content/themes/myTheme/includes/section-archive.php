@@ -1,7 +1,19 @@
 <?php 
+    $MAX_NUM_POSTS_SHOW = 3;
+
     $default_thumbnail = site_url() . '/wp-content/themes/myTheme/images/default.jpg'; 
     $words_per_min = 200;
 ?>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -20,6 +32,7 @@
             'orderby' => 'ASC',
             'posts_per_page'=>-1 // Ignore page limit & get all.
         ); 
+        $rendered_count = 0;
         $query = new WP_Query( $args );
         $posts = $query->posts;
 
@@ -30,7 +43,8 @@
                 $campdate = get_field('campdatetime');
                 // Render camp badge if camp's datetime is after now.
                 if( (double)$campdate >= (double)date("YmdHis")):
-                    
+                    if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
+                    $rendered_count++;
                     // Get featured thumbnail or set to default if none.
                     $thumbnail_url = '';
                     if( has_post_thumbnail() ){                
@@ -141,27 +155,36 @@
                     </div>
                     </div>
                     </div>
-                    </div>
+                   
+            </div>
             <?php endif; endif; ?>
-        <?php endforeach; ?>       
-    </div>
+        <?php endforeach; ?>   
+        <?php $url= (home_url() . '/camps');?>
+ 
+        <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/camps'" value="View All" />
+   
 
+    </div>
 </div> <!-- end camp section -->
 <!-- ********************************** -->
 <!-- ********************************** -->
-
-
-
-
-
 <br/><br/><br/><br/>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
 <!-- ********************************** -->
-<!--      Render Future (PAST?) Camp Badges     -->
+<!--      Render Past Camp Badges     -->
 <!-- ********************************** -->
 
 <div class= "camp-section" id="past-camps">
@@ -169,6 +192,7 @@
     <div class="row">   
         <!-- Render preview badges of past camp custom posts. -->
         <?php 
+        $rendered_count = 0;
         $args = array( 
             'post_type' => 'camps',
             'orderby' => 'ASC',
@@ -183,7 +207,9 @@
                     
                 // Render camp badge if camp's datetime is after now.
                 if( (double)get_field('campdatetime') < (double)date("YmdHis")):
-                    
+                    if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
+                    $rendered_count++;
+
                     // Get featured thumbnail or set to default if none.
                     $thumbnail_url = '';
                     if( has_post_thumbnail() ){                
@@ -228,14 +254,22 @@
             <?php endif; endif; ?>
         <?php endforeach; ?>       
     </div>
+    <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/camps'" value="View All" />
 
 </div> <!-- end camp section -->
 <!-- ********************************** -->
 <!-- ********************************** -->
-
-
-
 <br/><br/><br/><br/>
+
+
+
+
+
+
+
+
+
+
 
 <!-- ********************************** -->
 <!--      Render Code Challenge Badges     -->
@@ -253,15 +287,18 @@
             'orderby' => 'ASC',
             'posts_per_page'=>-1
         ); 
+        $rendered_count = 0;
         $query = new WP_Query( $args );
         $posts = $query->posts;
 
         foreach($posts as $post):
             // Continue if admin set a difficulty (prevent error).
             if(get_post_meta($post->ID, 'difficulty', true)):  
-                    
-                // Render camp badge if camp's datetime is after now.
-             //   if( (double)get_field('campdatetime') < (double)date("YmdHis")):
+
+                // Limit how many badges can render.
+                if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
+                $rendered_count++;
+             
                     
                     // Get featured thumbnail or set to default if none.
                     $thumbnail_url = '';
