@@ -19,6 +19,123 @@
 
 
 <!-- ********************************** -->
+<!--      Render Code Quest Badges     -->
+<!-- ********************************** -->
+
+<div class= "camp-section" id="past-camps">
+    <h2 id="code-quests" class="d-flex justify-content-center"><br><br><br>Code Quests<br><br><br></h2>
+    
+  
+    <div class="row">   
+        <!-- Render preview badges of past camp custom posts. -->
+        <?php 
+        $args = array( 
+            'post_type' => 'challenges',
+            'orderby' => 'ASC',
+            'posts_per_page'=>-1
+        ); 
+        $rendered_count = 0;
+        $query = new WP_Query( $args );
+        $posts = $query->posts;
+
+        foreach($posts as $post):
+            // Continue if admin set a difficulty (prevent error).
+            if(get_post_meta($post->ID, 'difficulty', true)):  
+
+                // Limit how many badges can render.
+                if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
+                $rendered_count++;
+             
+                    
+                    // Get featured thumbnail or set to default if none.
+                    $thumbnail_url = '';
+                    if( has_post_thumbnail() ){                
+                        $imageid = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'blog-small' );
+                        $thumbnail_url = $imageid['0'];
+                    } else {
+                        // Default thumbnail.
+                        $thumbnail_url = $default_thumbnail;
+                    }?>
+
+
+                    <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">                    
+                    <!-- Card Image -->
+                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+                        alt="<?php the_title();?>">
+                    </a>
+
+                    <!-- Card Contents -->
+                    <div class="card-body">
+                        <p class="card-text">
+                        <b><?php the_title(); ?></b>
+                        <br/>
+                        <?php                      
+                            for ($i=0; $i<5; $i++) {
+                                if( (int)get_field('difficulty') > $i ){
+                                    ?>
+                                    <span class="dashicons dashicons-star-filled checked"></span>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <span class="dashicons dashicons-star-filled"></span>
+                                    <?php
+
+                                }
+                            }
+                        ?>
+
+                        
+                        <?php the_excerpt() ?>
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                                          
+                            <button type="button" class="btn btn-sm btn-outline-secondary btn-block" onclick="window.location.href = '<?php the_permalink();?>';">View Code Challenge</button>
+                        
+                        <?php 
+                            $postcontent = get_post_field( 'post_content', $post->ID );
+                        ?>
+                        
+                       
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+            <?php endif; ?>
+        <?php endforeach; ?>       
+    </div>
+
+</div> <!-- end quest section -->
+<!-- ********************************** -->
+<!-- ********************************** -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ********************************** -->
 <!--      Render Future Camp Badges     -->
 <!-- ********************************** -->
 <div class= "camp-section" id = "upcoming-camps">
@@ -296,98 +413,6 @@
 
 
 
-
-<!-- ********************************** -->
-<!--      Render Code Challenge Badges     -->
-<!-- ********************************** -->
-
-<div class= "camp-section" id="past-camps">
-    <h2 id="code-quests" class="d-flex justify-content-center"><br><br><br>Code Quests<br><br><br></h2>
-    
-  
-    <div class="row">   
-        <!-- Render preview badges of past camp custom posts. -->
-        <?php 
-        $args = array( 
-            'post_type' => 'challenges',
-            'orderby' => 'ASC',
-            'posts_per_page'=>-1
-        ); 
-        $rendered_count = 0;
-        $query = new WP_Query( $args );
-        $posts = $query->posts;
-
-        foreach($posts as $post):
-            // Continue if admin set a difficulty (prevent error).
-            if(get_post_meta($post->ID, 'difficulty', true)):  
-
-                // Limit how many badges can render.
-                if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
-                $rendered_count++;
-             
-                    
-                    // Get featured thumbnail or set to default if none.
-                    $thumbnail_url = '';
-                    if( has_post_thumbnail() ){                
-                        $imageid = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'blog-small' );
-                        $thumbnail_url = $imageid['0'];
-                    } else {
-                        // Default thumbnail.
-                        $thumbnail_url = $default_thumbnail;
-                    }?>
-
-
-                    <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">                    
-                    <!-- Card Image -->
-                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
-                        alt="<?php the_title();?>">
-                    </a>
-
-                    <!-- Card Contents -->
-                    <div class="card-body">
-                        <p class="card-text">
-                        <b><?php the_title(); ?></b>
-                        <br/>
-                        <?php                      
-                            for ($i=0; $i<5; $i++) {
-                                if( (int)get_field('difficulty') > $i ){
-                                    ?>
-                                    <span class="dashicons dashicons-star-filled checked"></span>
-                                    <?php
-                                }else{
-                                    ?>
-                                    <span class="dashicons dashicons-star-filled"></span>
-                                    <?php
-
-                                }
-                            }
-                        ?>
-
-                        
-                        <?php the_excerpt() ?>
-                        </p>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                                          
-                            <button type="button" class="btn btn-sm btn-outline-secondary btn-block" onclick="window.location.href = '<?php the_permalink();?>';">View Code Challenge</button>
-                        
-                        <?php 
-                            $postcontent = get_post_field( 'post_content', $post->ID );
-                        ?>
-                        
-                       
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-            <?php endif; ?>
-        <?php endforeach; ?>       
-    </div>
-
-</div> <!-- end camp section -->
-<!-- ********************************** -->
-<!-- ********************************** -->
 
 
 
