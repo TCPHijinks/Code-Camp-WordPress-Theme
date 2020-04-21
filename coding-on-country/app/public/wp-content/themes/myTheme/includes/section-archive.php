@@ -61,7 +61,7 @@
         foreach($a as $post):
             // Continue if admin set a camp date (prevent error).
             if(get_post_meta($post->ID, 'campdatetime', true)):  
-                        
+                if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }        
                 $campdate = (double)get_field('campdatetime',$post->ID);
               
 
@@ -227,7 +227,7 @@
         $query = new WP_Query( $args );
         $posts = $query->posts;
 
-        foreach($posts as $post):
+        foreach($a as $post):
             // Continue if admin set a camp date (prevent error).
             if(get_post_meta($post->ID, 'campdatetime', true)):  
                     
