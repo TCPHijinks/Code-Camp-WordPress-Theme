@@ -33,16 +33,42 @@
             'posts_per_page'=>-1 // Ignore page limit & get all.
         ); 
         $rendered_count = 0;
-        $query = new WP_Query( $args );
-        $posts = $query->posts;
+        $last_campdate = 0;
 
-        foreach($posts as $post):
+        // Get posts as array of objects.
+        $query = new WP_Query( $args );
+        $a = $query->posts;
+
+        // Sort posts by date so the closest appear first.
+        $i = count($a);
+        $sorted = false;
+        while ( (!$sorted) ) {
+            $sorted = true;
+
+            for($j = 1; $j < $i; $j++){
+                if((double)get_field('campdatetime',$a[$j-1]->ID) > (double)get_field('campdatetime',$a[$j]->ID))
+                {
+                    $temp = $a[$j-1];
+                    $a[$j-1] = $a[$j];
+                    $a[$j] = $temp;
+                    $sorted = false;
+                }
+             }
+           
+        }
+
+        // Render sorted posts.
+        foreach($a as $post):
             // Continue if admin set a camp date (prevent error).
             if(get_post_meta($post->ID, 'campdatetime', true)):  
                         
-                $campdate = get_field('campdatetime');
+                $campdate = (double)get_field('campdatetime',$post->ID);
+              
+
+
                 // Render camp badge if camp's datetime is after now.
-                if( (double)$campdate >= (double)date("YmdHis")):
+                if( (double)$campdate >= (double)date("YmdHis") ):
+                    
                     if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
                     $rendered_count++;
                     // Get featured thumbnail or set to default if none.
