@@ -185,6 +185,38 @@ add_action( 'init', 'my_camp_post_type' );
 
 
 
+function wpb_move_comment_field_to_bottom( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+    }
+     
+    add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+
+
+
+
+add_filter( 'comment_form_defaults', 'remove_textarea' );
+add_action( 'comment_form_top', 'add_textarea' );
+
+function remove_textarea($defaults)
+{
+    $defaults['comment_field'] = '';
+    return $defaults;
+}
+
+function add_textarea()
+{
+    echo '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="60" rows="6" placeholder="write your comment here..." aria-required="true"></textarea></p>';
+}
+
+
+
+
+
+
+
 
 function my_code_challenge_post_type()
 {

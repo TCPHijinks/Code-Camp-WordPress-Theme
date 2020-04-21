@@ -22,6 +22,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
+       <a href="#home">Home</a>
         <a href="#upcoming-camps">Upcoming Camps</a>
         <a href="#past-camps">Past Camps</a>
         <?php
@@ -35,7 +36,9 @@
                 }
                 
                 
-                ?>   
+                ?> 
+                 <!-- Render a search bar -->
+        <?php get_search_form(); ?>  
         
         <!-- <form class="form-inline my-2 my-md-0">
           <input class="form-control" type="text" placeholder="Search" aria-label="Search">

@@ -42,13 +42,24 @@
 
                   
    
+ <!-- Show navigation buttons for multi-page posts. -->
 
+        <!-- Blog pages links show if blog contains page breaks/many pages -->
+        <h5> <?php wp_link_pages( ); ?> </h5>
+        
+        <!-- *********** -->
+        <!-- Default commenting system. Needs styling. -->
+        <?php comments_template( ) ?>
+ 
+    
 
     </div>
-    
+
+   
 </div>
       
 <style type="text/css">
+/* Google Maps Styling */
 .acf-map {
     width: 100%;
     height: 400px;
@@ -188,6 +199,7 @@ $(document).ready(function(){
 
 })(jQuery);
 </script>
+
 
 
 <?php get_footer(); // Load footer by calling WP func ?> 
