@@ -2,11 +2,8 @@
 
 <div class="page-wrap">
 <div class="container">  
+<h1>Search Results for '<i><?php echo get_search_query();?>'.</i></h1>
 <section class="row">
-   
-    <h1>Search Results for <i><?php echo get_search_query();?></i> 
-        in <i><?php echo single_tag_title();?>.</i></h1>
-   
         <?php get_template_part('includes/section','searchresults'); ?>   <!-- Loop that gens content -->
 
     <!-- Pagination - only show so many posts at once -->

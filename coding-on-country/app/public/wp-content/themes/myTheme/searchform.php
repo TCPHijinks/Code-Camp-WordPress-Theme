@@ -2,7 +2,7 @@
 
     <label for="search">Search</label>
     
-    <input type="hidden" name="cat" value="4">
+    <input type="hidden" name="dd" value="4">
     
     <!-- Search input that Requires something be entered. -->
     <input type="text" name="s" id="search" 
