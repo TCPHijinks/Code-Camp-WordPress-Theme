@@ -16,7 +16,7 @@
 
 
 <nav class="navbar navbar-dark fixed-top bg-dark">
-<a class="navbar-brand" href="<?php bloginfo('url')?>"><?php bloginfo('name')?></a>
+<a class="navbar-brand" href="#home"><?php bloginfo('name')?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
