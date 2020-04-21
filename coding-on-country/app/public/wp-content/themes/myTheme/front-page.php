@@ -2,15 +2,25 @@
 
 <div class="page-wrap">  
     <div class="container">  
+        
+    <div class= "single-page-format" id="home">
+        <?php
+            $page_data = get_page(0);                    
+                    
+
+            $content = apply_filters('the_content', $page_data->post_content); 
+            $title = $page_data->post_title; 
+            echo "<h1 id=\"$title\"><br><br>$title</h1>"; 
+            echo $content; ?>
+
+</div>
 
         <div class="row">
             <div class="col-xl-12 adminPosts">   
-
+           
                 <?php 
-
-                    $adminPosts = get_posts();
-                    foreach ($adminPosts as $singleAPost){
-                
+                    $adminPosts = get_posts();                
+                    foreach ($adminPosts as $singleAPost){                       
                 
                 ?>
 
@@ -43,8 +53,7 @@
         <?php get_template_part('includes/section','archive'); ?>   <!-- Loop that gens content -->
 
 
-        <!-- Render a search bar -->
-        <?php get_search_form(); ?>
+       
         
         
         
