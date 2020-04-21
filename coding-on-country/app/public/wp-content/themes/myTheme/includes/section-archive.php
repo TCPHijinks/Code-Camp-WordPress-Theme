@@ -1,5 +1,5 @@
 <?php 
-    $default_thumbnail = 'https://www.elegantthemes.com/blog/wp-content/uploads/2019/04/change-wordpress-thumbnail-size-featured-image.jpg'; 
+    $default_thumbnail = site_url() . '/wp-content/themes/myTheme/images/default.jpg'; 
     $words_per_min = 200;
 ?>
 
