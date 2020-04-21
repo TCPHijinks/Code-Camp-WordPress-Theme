@@ -23,6 +23,7 @@
 
       <div class="collapse navbar-collapse" id="navbarsExample01">
        <a href="#home">Home</a>
+       <a href="#code-quests">Code Quests</a>
         <a href="#upcoming-camps">Upcoming Camps</a>
         <a href="#past-camps">Past Camps</a>
         <?php
