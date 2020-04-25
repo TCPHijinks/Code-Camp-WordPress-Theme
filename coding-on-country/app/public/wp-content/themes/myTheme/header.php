@@ -27,8 +27,19 @@
         <a href="<?php echo get_bloginfo('wpurl');?>/#code-quests">Code Quests</a>
         <a href="<?php echo get_bloginfo('wpurl');?>/#upcoming-camps">Upcoming Camps</a>
         <a href="<?php echo get_bloginfo('wpurl');?>/#past-camps">Past Camps</a>
-        <a href="<?php echo get_bloginfo('wpurl');?>/#support-us">Support</a>
         <?php 
+          $args = array( 
+              'post_type' => 'support-us',
+              'orderby' => 'ASC',
+              'posts_per_page'=>-1
+          ); 
+          $query = new WP_Query( $args );
+          $posts = $query->posts;
+          // Only have support section if any active support posts.
+          if(count($posts) > 0):?>
+            <a href="<?php echo get_bloginfo('wpurl');?>/#support-us">Support</a>
+          <?php endif;
+      
         $pages = get_pages(); 
                 foreach ($pages as $page_data) {
                   

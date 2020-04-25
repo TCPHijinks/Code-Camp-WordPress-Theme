@@ -429,8 +429,7 @@
 <!-- ********************************** -->
 <!--      Render Support Us Sections    -->
 <!-- ********************************** -->
-<div id="support-us">
-    <?php 
+<?php 
      $args = array( 
         'post_type' => 'support-us',
         'orderby' => 'ASC',
@@ -439,7 +438,9 @@
     $query = new WP_Query( $args );
     $posts = $query->posts;
 
-    if(count($posts) > 0):?>
+if(count($posts) > 0):?>
+<div id="support-us">
+    
         <h2 class="d-flex justify-content-center"><br><br><br>Support Us<br><br><br></h2> <?php
         foreach($posts as $post):
             // Continue if admin set a camp date (prevent error).
@@ -456,18 +457,17 @@
                         marginwidth="0px" 
                         height="400px" 
                         width="600px" 
-                        allowfullscreen=""/>                    
+                        allowfullscreen="">    
+                    </iframe>                
                 </a>
             <?php
             break; // Only render 1 support post.
             endif;    
-        endforeach;    
-    endif;
+        endforeach; 
     ?>
 </div>
-
 <br/><br/><br/><br/>
-
+<?php endif;?>
 
 
 
