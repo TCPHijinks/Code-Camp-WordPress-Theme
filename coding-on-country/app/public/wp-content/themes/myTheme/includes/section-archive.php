@@ -22,7 +22,7 @@
 <!--      Render Code Quest Badges     -->
 <!-- ********************************** -->
 
-<div class= "camp-section" id="past-camps">
+<div class= "camp-section" id="code-quests">
     <h2 id="code-quests" class="d-flex justify-content-center"><br><br><br>Code Quests<br><br><br></h2>
     
   
@@ -439,7 +439,7 @@
 <!-- ********************************** -->
 <!--      Render Support Us Sections    -->
 <!-- ********************************** -->
-<div>
+<div id="support-us">
     <?php 
      $args = array( 
         'post_type' => 'support-us',
