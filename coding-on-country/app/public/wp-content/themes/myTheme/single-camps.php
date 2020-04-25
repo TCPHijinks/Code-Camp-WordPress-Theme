@@ -1,11 +1,88 @@
 
 <!-- THIS TEMPLATE LOADS THE POST CONTENT -->
-<?php get_header(); ?> 
+<?php get_header(); 
+if(get_post_meta($post->ID, 'campdatetime', true)){  
+   $campdate = (double)get_field('campdatetime',$post->ID);
+   if( (double)$campdate >= (double)date("YmdHis") ) {
+
+    // Calculate time until date. 
+    $campyear = substr($campdate,0, 4);
+    $campmonth = substr($campdate,4, 2);
+    $campday = substr($campdate,6, 2);
+    $camphour = substr($campdate,8, 2);
+    $campminute = substr($campdate,10, 2);
+
+
+    // Declare and define two dates 
+    $date1 = strtotime((string)date("Y-m-d H:i:s"));  
+    $date2 = strtotime( $campyear.'-'.$campmonth.'-'.$campday.' '.$camphour.':'.$campminute.':00');  
+    
+    // Formulate the Difference between two dates 
+    $diff = abs($date2 - $date1);  
+
+    
+    // To get the year divide the resultant date into 
+    // total seconds in a year (365*60*60*24) 
+    $years = floor($diff / (365*60*60*24));  
+    
+    
+    // To get the month, subtract it with years and 
+    // divide the resultant date into 
+    // total seconds in a month (30*60*60*24) 
+    $months = floor(($diff - $years * 365*60*60*24) 
+                                / (30*60*60*24));  
+    
+    
+    // To get the day, subtract it with years and  
+    // months and divide the resultant date into 
+    // total seconds in a days (60*60*24) 
+    $days = floor(($diff - $years * 365*60*60*24 -  
+                $months*30*60*60*24)/ (60*60*24)); 
+    
+    
+    // To get the hour, subtract it with years,  
+    // months & seconds and divide the resultant 
+    // date into total seconds in a hours (60*60) 
+    $hours = floor(($diff - $years * 365*60*60*24  
+        - $months*30*60*60*24 - $days*60*60*24) 
+                                    / (60*60));  
+    
+    
+    // To get the minutes, subtract it with years, 
+    // months, seconds and hours and divide the  
+    // resultant date into total seconds i.e. 60 
+    $minutes = floor(($diff - $years * 365*60*60*24  
+            - $months*30*60*60*24 - $days*60*60*24  
+                            - $hours*60*60)/ 60);  
+    
+    
+    // To get the minutes, subtract it with years, 
+    // months, seconds, hours and minutes  
+    $seconds = floor(($diff - $years * 365*60*60*24  
+            - $months*30*60*60*24 - $days*60*60*24 
+                    - $hours*60*60 - $minutes*60));  
+    
+    $remaining = '';
+    
+    if((double)$years > 0) { ($remaining .= $years.' years, '); }
+    if((double)$months > 0) { ($remaining .= $months.' months, '); }
+    if((double)$days > 0) { ($remaining .= $days.' days, '); }
+    if((double)$hours > 0) { ($remaining .= $hours.' hours, '); }
+    if((double)$minutes > 0) { ($remaining .= $minutes.' minutes.'); }
+   }
+}
+
+
+
+?> 
+
+
+
 
 <div class="page-wrap">
     <div class="container">  
 
-        <h1><?php the_title();?></h1>
+        <h1 style="text-align:center"><?php the_title();?></h1>
 
         <?php if(has_post_thumbnail( )):?>           
             <!-- Load large image for post (see functions.php) -->
@@ -16,28 +93,47 @@
         
         
         <section class="row">
-            
-            <div class="col-6">
-                <?php get_template_part('includes/section','test_carscontent'); ?>
-                <?php wp_link_pages();?>
-            </div>
+            <!-- Render future camp info if future camp -->
+            <?php 
+            if( (double)$campdate >= (double)date("YmdHis") ): ?>
+                <div class="col-8">
+                <?php 
+                if( have_posts() ): 
+                    while( have_posts() ): the_post(); // If have post, while have, render post
+                        the_content(); // Render the content.
+                    endwhile;
+                    wp_link_pages();
+                endif; ?>
+               
+                </div>
 
-            <div class="col-6">
-                <?php
-                    $location = get_field('camplocation');
-                    if( $location ): ?>
-                        <div class="acf-map" data-zoom="16">
-                            <div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>"></div>
-                        </div>    
-                <?php endif?> 
-                <ul>
-                    <li>Coslour: <?php the_field('colour'); ?></li>
-                    <?php if(get_post_meta($post->ID, 'rating', true)): ?> 
-                        <li>Rating: <?php the_field('rating'); ?></li>
-                    <?php endif; ?>
-                </ul>
-
-            </div>
+                <div class="col-4">
+                    <?php
+                        $location = get_field('camplocation');
+                        if( $location ): ?>
+                            <div class="acf-map" data-zoom="0">
+                                <div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>"></div>
+                            </div>    
+                    <?php endif?>                     
+                    <?php 
+                        echo $campminute.":".$camphour." - ".$campday."/".$campmonth."/".$campyear; ?>
+                        <br/> <?php
+                        echo "Starts in <i>".$remaining."</i>"; 
+                    ?>   
+                </div>
+                <?php endif; ?>
+                 <!-- Render past camp info if past camp -->
+                 <?php if( (double)$campdate < (double)date("YmdHis") ): ?>
+                    <div class="col-12">
+                        <?php 
+                        if( have_posts() ): 
+                            while( have_posts() ): the_post(); // If have post, while have, render post
+                                the_content(); // Render the content.
+                            endwhile;
+                            wp_link_pages();
+                        endif;?>               
+                    </div>
+                <?php endif; ?>               
         </section>
 
                   

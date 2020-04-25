@@ -15,6 +15,7 @@
     <!-- Show post tags as <a> links. -->
     <div>
         <?php    
+        /*
             $tags = get_the_tags( ); // Get all post tags.
             if($tags):
                 foreach($tags as $tag):?>
@@ -24,14 +25,14 @@
                         <?php echo $tag->name; ?>
                     </a>
                     
-                <?php endforeach; endif;?>
+                <?php endforeach; endif; */?>
    
     </div>
     
    
     <!-- Show categories as <a> links. -->
     <div>
-        <?php 
+        <?php /*
                 $categories = get_the_category();
                 foreach($categories as $cat): ?>
 
@@ -39,7 +40,7 @@
                         <?php echo $cat->name; ?>
                     </a>
                     
-                <?php endforeach; ?>
+                <?php endforeach; */?>
     </div>
 
     
