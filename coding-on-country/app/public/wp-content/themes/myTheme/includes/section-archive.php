@@ -22,11 +22,11 @@
 <!--      Render Code Quest Badges     -->
 <!-- ********************************** -->
 
-<div class= "camp-section" id="code-quests">
+<div class="camp-section" id="code-quests">
     <h2 id="code-quests" class="d-flex justify-content-center"><br><br><br>Code Quests<br><br><br></h2>
-    
-  
-    <div class="row">   
+
+
+    <div class="row">
         <!-- Render preview badges of past camp custom posts. -->
         <?php 
         $args = array( 
@@ -76,52 +76,53 @@
                     }?>
 
 
-                    <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">                    
-                    <!-- Card Image -->
-                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <!-- Card Image -->
+                <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"
                         alt="<?php the_title();?>">
-                    </a>
+                </a>
 
-                    <!-- Card Contents -->
-                    <div class="card-body">
-                        <p class="card-text">
+                <!-- Card Contents -->
+                <div class="card-body">
+                    <p class="card-text">
                         <b><?php the_title(); ?></b>
-                        <br/>
+                        <br />
                         <?php                      
                             for ($i=0; $i<5; $i++) {
                                 if( (int)get_field('difficulty') > $i ){
                                     ?>
-                                    <span class="dashicons dashicons-star-filled checked"></span>
-                                    <?php
+                        <span class="dashicons dashicons-star-filled checked"></span>
+                        <?php
                                 }else{
                                     ?>
-                                    <span class="dashicons dashicons-star-filled"></span>
-                                    <?php
+                        <span class="dashicons dashicons-star-filled"></span>
+                        <?php
 
                                 }
                             }
                         ?>
 
-                        
-                        <?php the_excerpt() ?>
-                        </p>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                                          
-                            <button type="button" class="btn btn-sm btn-outline-secondary btn-block" onclick="window.location.href = '<?php the_permalink();?>';">View Code Challenge</button>
-                        
+                        <?php the_excerpt() ?>
+                    </p>
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <button type="button" class="btn btn-sm btn-outline-secondary btn-block"
+                            onclick="window.location.href = '<?php the_permalink();?>';">View Code Challenge</button>
+
                         <?php 
                             $postcontent = get_post_field( 'post_content', $post->ID );
                         ?>
-                        
-                       
+
+
                     </div>
-                    </div>
-                    </div>
-                    </div>
-            <?php endif; ?>
-        <?php endforeach; ?>       
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 
 </div> <!-- end quest section -->
@@ -156,23 +157,44 @@
 <!-- ********************************** -->
 <!--      Render Future Camp Badges     -->
 <!-- ********************************** -->
-<div class= "camp-section" id = "upcoming-camps">
-    
+<div class="camp-section" id="upcoming-camps">
+
     <h2 class="d-flex justify-content-center"><br><br><br>Upcoming Camps<br><br><br></h2>
-    <div class="row">   
-        <!-- Render preview badges of past camp custom posts. -->
-        <?php   
+    <?php 
+        // Get all camp post types.
         $args = array( 
             'post_type' => 'camps',
             'orderby' => 'ASC',
             'posts_per_page'=>-1 // Ignore page limit & get all.
         ); 
-        $rendered_count = 0;
-        $last_campdate = 0;
-
         // Get posts as array of objects.
         $query = new WP_Query( $args );
         $a = $query->posts;
+
+        $valid_posts = 0;
+        foreach($a as $post){
+            if( (double)get_field('campdatetime',$post->ID) >= (double)date("YmdHis") ){
+                $valid_posts++;
+            }
+            
+        }
+        // Load "no posts" message if no future camps.
+        if($valid_posts == 0): ?>
+
+    <h5 class="d-flex justify-content-center"><br><i>There are no upcoming camps.</i><br></h5>
+    <input type="button" class="btn btn-lg btn-outline-secondary"
+        onClick="document.getElementById('past-camps').scrollIntoView();" value="View Past Camps" />
+    <?php                
+        else:
+    ?>
+    <div class="row">
+        <!-- Render preview badges of past camp custom posts. -->
+        <?php   
+       
+        $rendered_count = 0;
+       
+
+        
 
         // Sort posts by date so the closest appear first.
         $i = count($a);
@@ -282,27 +304,28 @@
                     ?>
 
 
-                    <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">                    
-                    <!-- Card Image -->                
-                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <!-- Card Image -->
+                <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"
                         alt="<?php the_title();?>">
-                    </a>    
-                        
-                
-                    
+                </a>
 
-                    <!-- Card Contents -->
-                    <div class="card-body">
-                        <p class="card-text">
-                        <b><?php the_title(); ?></b>      
-                        <i> <?php echo $remaining; ?></i>           
+
+
+
+                <!-- Card Contents -->
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><?php the_title(); ?></b>
+                        <i> <?php echo $remaining; ?></i>
                         <?php the_excerpt() ?>
-                        </p>
+                    </p>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">                    
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href = '<?php the_permalink();?>';">View</button>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="window.location.href = '<?php the_permalink();?>';">View</button>
                         </div>
 
                         <?php 
@@ -313,22 +336,24 @@
                         ?>
                         <small class="text-muted"><?php echo $readtime ?> mins</small>
                     </div>
-                    </div>
-                    </div>
-                   
+                </div>
             </div>
-            <?php endif; endif; ?>
-        <?php endforeach; ?>   
+
+        </div>
+        <?php endif; endif; ?>
+        <?php endforeach; ?>
         <?php $url= (home_url() . '/camps');?>
- 
-        <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/upcoming_camps'" value="View All" />
-   
+
+        <input type="button" class="btn btn-lg btn-outline-secondary btn-block"
+            onclick="location.href='/upcoming_camps'" value="View All" />
+
 
     </div>
+    <?php endif; ?>
 </div> <!-- end camp section -->
 <!-- ********************************** -->
 <!-- ********************************** -->
-<br/><br/><br/><br/>
+<br /><br /><br /><br />
 
 
 
@@ -347,9 +372,25 @@
 <!--      Render Past Camp Badges     -->
 <!-- ********************************** -->
 
-<div class= "camp-section" id="past-camps">
+<div class="camp-section" id="past-camps">
     <h2 class="d-flex justify-content-center"><br><br><br>Past Camps<br><br><br></h2>
-    <div class="row">   
+    <?php 
+    $valid_posts = 0;
+    foreach($a as $post){
+        if( (double)get_field('campdatetime',$post->ID) < (double)date("YmdHis") ){
+            $valid_posts++;
+        }
+    }
+    if($valid_posts == 0): ?>
+    <h5 class="d-flex justify-content-center"><br><i>There are no past camps.</i><br></h5>
+    <input type="button" class="btn btn-lg btn-outline-secondary"
+        onClick="document.getElementById('upcoming-camps').scrollIntoView();" value="View Upcoming Camps" /><?php    
+    
+    else:
+
+    ?>
+
+    <div class="row">
         <!-- Render preview badges of past camp custom posts. -->
         <?php 
         $rendered_count = 0;
@@ -374,23 +415,24 @@
                     }?>
 
 
-                    <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">                    
-                    <!-- Card Image -->
-                    <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"                     
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <!-- Card Image -->
+                <a href='<?php the_permalink();?>'> <img class="card-img-top" src="<?php echo $thumbnail_url ?>"
                         alt="<?php the_title();?>">
-                    </a>
+                </a>
 
-                    <!-- Card Contents -->
-                    <div class="card-body">
-                        <p class="card-text">
+                <!-- Card Contents -->
+                <div class="card-body">
+                    <p class="card-text">
                         <b><?php the_title(); ?></b>
                         <?php the_excerpt() ?>
-                        </p>
+                    </p>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group" >                    
-                            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href = '<?php the_permalink();?>';">View</button>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                onclick="window.location.href = '<?php the_permalink();?>';">View</button>
                         </div>
                         <?php 
                             $postcontent = get_post_field( 'post_content', $post->ID );
@@ -398,21 +440,22 @@
                             
                             $readtime = round( $wordcount / $words_per_min ); 
                         ?>
-                        
+
                         <small class="text-muted"><?php echo $readtime ?> mins</small>
                     </div>
-                    </div>
-                    </div>
-                    </div>
-            <?php endif; endif; ?>
-        <?php endforeach; ?>       
+                </div>
+            </div>
+        </div>
+        <?php endif; endif; ?>
+        <?php endforeach; ?>
     </div>
-    <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/past_camps'" value="View All" />
-
+    <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/past_camps'"
+        value="View All" />
+    <?php endif; ?>
 </div> <!-- end camp section -->
 <!-- ********************************** -->
 <!-- ********************************** -->
-<br/><br/><br/><br/>
+<br /><br /><br /><br />
 
 
 
@@ -440,37 +483,24 @@
 
 if(count($posts) > 0):?>
 <div id="support-us">
-    
-        <h2 class="d-flex justify-content-center"><br><br><br>Support Us<br><br><br></h2> <?php
+
+    <h2 class="d-flex justify-content-center"><br><br><br>Support Us<br><br><br></h2> <?php
         foreach($posts as $post):
             // Continue if admin set a camp date (prevent error).
             if(get_post_meta($post->ID, 'pozible_url', true)):             
                 ?>
-                <a href="<?php echo get_field('pozible_url')?>" target="_blank" class="linkwrap">
-                    <div class="blocker"></div>
-                    <iframe src="<?php echo get_field('pozible_url')?>" 
-                        style="text-align:center border:0px #ffffff none;" 
-                        name="myiFrame" 
-                        scrolling="no" 
-                        frameborder="1" 
-                        marginheight="0px" 
-                        marginwidth="0px" 
-                        height="400px" 
-                        width="600px" 
-                        allowfullscreen="">    
-                    </iframe>                
-                </a>
-            <?php
+    <a href="<?php echo get_field('pozible_url')?>" target="_blank" class="linkwrap">
+        <div class="blocker"></div>
+        <iframe src="<?php echo get_field('pozible_url')?>" style="text-align:center border:0px #ffffff none;"
+            name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px"
+            width="600px" allowfullscreen="">
+        </iframe>
+    </a>
+    <?php
             break; // Only render 1 support post.
             endif;    
         endforeach; 
     ?>
 </div>
-<br/><br/><br/><br/>
+<br /><br /><br /><br />
 <?php endif;?>
-
-
-
-
-
-
