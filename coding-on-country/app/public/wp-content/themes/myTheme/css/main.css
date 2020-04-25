@@ -196,3 +196,10 @@ textarea:focus {
 .linkwrap iframe {
   z-index: 2;
 }
+
+/*
+* Smooth scrolling
+*/
+html {
+  scroll-behavior: smooth;
+}
