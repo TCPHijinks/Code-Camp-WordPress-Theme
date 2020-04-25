@@ -1,4 +1,4 @@
-<?php get_header(); // Load default header by calling WP func w/o params ?> 
+<?php get_header('secondary'); // Load default header by calling WP func w/o params ?> 
 
 <div class="page-wrap">  
     <div class="container">  

@@ -1,5 +1,4 @@
-<?php get_header('secondary'); // Load secondary header by calling WP func w/ that param ?> 
-<h2>ARCHVIE I JUST DID!</h2>
+<?php get_header(); // Load secondary header by calling WP func w/ that param ?> 
 <div class="page-wrap">
 <div class="container">  
 <section class="row">

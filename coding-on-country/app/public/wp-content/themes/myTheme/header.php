@@ -16,26 +16,30 @@
 
 
 <nav class="navbar navbar-dark fixed-top bg-dark">
-<a class="navbar-brand" href="#home"><?php bloginfo('name')?></a>
+<a class="navbar-brand" href="<?php bloginfo('url')?>#home"><?php bloginfo('name')?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
+    
       <div class="collapse navbar-collapse" id="navbarsExample01">
-       <a href="#home">Home</a>
-       <a href="#code-quests">Code Quests</a>
-        <a href="#upcoming-camps">Upcoming Camps</a>
-        <a href="#past-camps">Past Camps</a>
-        <?php
+        <a href="<?php echo get_bloginfo('wpurl');?>/#home"/>Home</a>
+        <a href="<?php echo get_bloginfo('wpurl');?>/#code-quests">Code Quests</a>
+        <a href="<?php echo get_bloginfo('wpurl');?>/#upcoming-camps">Upcoming Camps</a>
+        <a href="<?php echo get_bloginfo('wpurl');?>/#past-camps">Past Camps</a>
+        <a href="<?php echo get_bloginfo('wpurl');?>/#support-us">Support</a>
+        <?php 
         $pages = get_pages(); 
                 foreach ($pages as $page_data) {
                   
                     $content = apply_filters('the_content', $page_data->post_content); 
-                    $title = $page_data->post_title; 
-                    echo "<a href=\"#$title\">$title</a>"; 
-                    
+                    $title = $page_data->post_title; ?> 
+                    <a href="<?php echo get_bloginfo('wpurl') . '#' . $title ?> "><?php echo $title ?></a> 
+                    <?php
                 }
-                ?> 
+                ?>
+            
+                
                  <!-- Render a search bar -->
         <?php get_search_form(); ?>  
         
