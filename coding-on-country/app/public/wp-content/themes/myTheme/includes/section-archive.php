@@ -36,7 +36,27 @@
         ); 
         $rendered_count = 0;
         $query = new WP_Query( $args );
-        $posts = $query->posts;
+        $a = $query->posts;
+
+         // Sort posts by date so the closest appear first.
+         $i = count($a);
+         $sorted = false;
+         while ( (!$sorted) ) {
+             $sorted = true;
+ 
+             for($j = 1; $j < $i; $j++){
+                 if((double)get_field('difficulty',$a[$j-1]->ID) > (double)get_field('difficulty',$a[$j]->ID))
+                 {
+                     $temp = $a[$j-1];
+                     $a[$j-1] = $a[$j];
+                     $a[$j] = $temp;
+                     $sorted = false;
+                 }
+              }
+            
+         }
+         $posts = $a;
+
 
         foreach($posts as $post):
             // Continue if admin set a difficulty (prevent error).

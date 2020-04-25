@@ -35,8 +35,6 @@
                     echo "<a href=\"#$title\">$title</a>"; 
                     
                 }
-                
-                
                 ?> 
                  <!-- Render a search bar -->
         <?php get_search_form(); ?>  
