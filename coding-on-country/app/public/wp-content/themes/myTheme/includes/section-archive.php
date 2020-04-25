@@ -321,7 +321,7 @@
         <?php endforeach; ?>   
         <?php $url= (home_url() . '/camps');?>
  
-        <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/camps'" value="View All" />
+        <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/upcoming_camps'" value="View All" />
    
 
     </div>
@@ -407,7 +407,7 @@
             <?php endif; endif; ?>
         <?php endforeach; ?>       
     </div>
-    <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/camps'" value="View All" />
+    <input type="button" class="btn btn-lg btn-outline-secondary btn-block" onclick="location.href='/past_camps'" value="View All" />
 
 </div> <!-- end camp section -->
 <!-- ********************************** -->
