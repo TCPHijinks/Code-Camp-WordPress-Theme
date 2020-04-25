@@ -196,6 +196,8 @@ function my_code_challenge_post_type()
 add_action( 'init', 'my_code_challenge_post_type' );
 
 
+
+
 // Camps post type for admin panel.
 function my_camp_post_type()
 {
@@ -256,3 +258,59 @@ add_action( 'wp_enqueue_scripts', 'load_dashicons_front_end' );
 function load_dashicons_front_end() {
     wp_enqueue_style( 'dashicons' );
 }
+
+
+
+
+
+
+// Camps post type for admin panel.
+function my_past_camp_post_type()
+{
+    $args = array(
+        'labels' => array(
+            'name' => 'Past_Camps',
+            'singular_name' => 'Past_Camp',
+        ),
+        'hierarchical' => true, // Set false to make like a post.
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array(),
+        'show_in_rest' => true,
+    );
+
+    register_post_type( 'past_camps', $args );
+    
+}
+add_action( 'init', 'my_past_camp_post_type' );
+// Hide past camp so can't create.
+function remove_past_camp_menu_item() {    
+    remove_menu_page( 'edit.php?post_type=past_camps' );
+}
+add_action( 'admin_menu', 'remove_past_camp_menu_item' );
+
+
+// Past camp post - not intended for use outside of using its archive page.
+function my_upcoming_camp_post_type()
+{
+    $args = array(
+        'labels' => array(
+            'name' => 'Upcoming_Camps',
+            'singular_name' => 'Upcoming_Camp',
+        ),
+        'hierarchical' => true, // Set false to make like a post.
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-tickets-alt',
+        'supports' => array(),
+        'show_in_rest' => true,
+    );
+
+    register_post_type( 'upcoming_camps', $args );
+}
+add_action( 'init', 'my_upcoming_camp_post_type' );
+// Hide upcoming camps in admin panel.
+function remove_upcoming_camp_menu_item() {    
+    remove_menu_page( 'edit.php?post_type=upcoming_camps' );
+}
+add_action( 'admin_menu', 'remove_upcoming_camp_menu_item' );
