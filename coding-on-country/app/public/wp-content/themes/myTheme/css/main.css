@@ -179,3 +179,20 @@ textarea:focus {
 .checked {
   color: orange;
 }
+
+/*
+* Support us iFrame - hides iFrame under an <a> tag.
+*/
+.linkwrap {
+  position: relative;
+  display: inline-block;
+}
+.blocker {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+.linkwrap iframe {
+  z-index: 2;
+}

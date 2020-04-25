@@ -455,17 +455,19 @@
             // Continue if admin set a camp date (prevent error).
             if(get_post_meta($post->ID, 'pozible_url', true)):             
                 ?>
-                <iframe src="<?php echo get_field('pozible_url')?>" 
-                    style="text-align:center border:0px #ffffff none;" 
-                    name="myiFrame" 
-                    scrolling="no" 
-                    frameborder="1" 
-                    marginheight="0px" 
-                    marginwidth="0px" 
-                    height="400px" 
-                    width="600px" 
-                    allowfullscreen="">
-                </iframe>
+                <a href="<?php echo get_field('pozible_url')?>" target="_blank" class="linkwrap">
+                    <div class="blocker"></div>
+                    <iframe src="<?php echo get_field('pozible_url')?>" 
+                        style="text-align:center border:0px #ffffff none;" 
+                        name="myiFrame" 
+                        scrolling="no" 
+                        frameborder="1" 
+                        marginheight="0px" 
+                        marginwidth="0px" 
+                        height="400px" 
+                        width="600px" 
+                        allowfullscreen=""/>                    
+                </a>
             <?php
             break; // Only render 1 support post.
             endif;    
