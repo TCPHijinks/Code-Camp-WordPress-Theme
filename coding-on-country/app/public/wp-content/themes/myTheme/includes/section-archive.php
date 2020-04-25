@@ -34,7 +34,7 @@
             'orderby' => 'ASC',
             'posts_per_page'=>-1
         ); 
-        $rendered_count = 0;
+        
         $query = new WP_Query( $args );
         $a = $query->posts;
 
@@ -62,9 +62,7 @@
             // Continue if admin set a difficulty (prevent error).
             if(get_post_meta($post->ID, 'difficulty', true)):  
 
-                // Limit how many badges can render.
-                if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }
-                $rendered_count++;
+            
              
                     
                     // Get featured thumbnail or set to default if none.
@@ -197,8 +195,7 @@
         // Render sorted posts.
         foreach($a as $post):
             // Continue if admin set a camp date (prevent error).
-            if(get_post_meta($post->ID, 'campdatetime', true)):  
-                if($rendered_count >= $MAX_NUM_POSTS_SHOW) { break; }        
+            if(get_post_meta($post->ID, 'campdatetime', true)):              
                 $campdate = (double)get_field('campdatetime',$post->ID);
               
 
@@ -356,14 +353,7 @@
         <!-- Render preview badges of past camp custom posts. -->
         <?php 
         $rendered_count = 0;
-        $args = array( 
-            'post_type' => 'camps',
-            'orderby' => 'ASC',
-            'posts_per_page'=>-1
-        ); 
-        $query = new WP_Query( $args );
-        $posts = $query->posts;
-
+        
         foreach($a as $post):
             // Continue if admin set a camp date (prevent error).
             if(get_post_meta($post->ID, 'campdatetime', true)):  
