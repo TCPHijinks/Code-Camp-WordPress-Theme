@@ -115,32 +115,11 @@ add_action('widgets_init', 'my_sidebars');
 
 
 
-function my_first_post_test_type()
-{
-
-    $args = array(
-        'labels' => array(
-            'name' => 'Cars',
-            'singular_name' => 'Car',
-        ),
-        'hierarchical' => true, // Set false to make like a post.
-        'public' => true,
-        'has_archive' => true,
-        'menu_icon' => 'dashicons-tickets-alt',
-        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
-        //'rewrite' => array('slug' => 'test-url-4-cars'),
-        'show_in_rest' => true,
-    );
-
-    register_post_type( 'cars_test', $args );
-
-}
-add_action( 'init', 'my_first_post_test_type' );
 
 
 
 
-
+/*
 function my_first_taxonomy()
 {
    
@@ -158,10 +137,66 @@ function my_first_taxonomy()
 
 }
 add_action( 'init', 'my_first_taxonomy' );
+*/
 
 
 
 
+
+
+
+
+function wpb_move_comment_field_to_bottom( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+     
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+add_filter( 'comment_form_defaults', 'remove_textarea' );
+add_action( 'comment_form_top', 'add_textarea' );
+
+// Remove original default comment text area.
+function remove_textarea($defaults)
+{
+    $defaults['comment_field'] = '';
+    return $defaults;
+}
+
+// Replace default comment text area.
+function add_textarea()
+{
+    echo '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="60" rows="6" placeholder=" write your comment here..." aria-required="true"></textarea></p>';
+}
+
+
+
+// Code quest post type for admin panel.
+function my_code_challenge_post_type()
+{
+
+    $args = array(
+        'labels' => array(
+            'name' => 'Code Quests',
+            'singular_name' => 'Code Quest',
+        ),
+        'hierarchical' => true, // Set false to make like a post.
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-buddicons-activity',
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        //'rewrite' => array('slug' => 'test-url-4-cars'),
+        'show_in_rest' => true,
+    );
+
+    register_post_type( 'challenges', $args );
+
+}
+add_action( 'init', 'my_code_challenge_post_type' );
+
+
+// Camps post type for admin panel.
 function my_camp_post_type()
 {
     $args = array(
@@ -184,65 +219,28 @@ function my_camp_post_type()
 add_action( 'init', 'my_camp_post_type' );
 
 
-
-
-function wpb_move_comment_field_to_bottom( $fields ) {
-    $comment_field = $fields['comment'];
-    unset( $fields['comment'] );
-    $fields['comment'] = $comment_field;
-    return $fields;
-    }
-     
-    add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
-
-
-
-
-add_filter( 'comment_form_defaults', 'remove_textarea' );
-add_action( 'comment_form_top', 'add_textarea' );
-
-function remove_textarea($defaults)
-{
-    $defaults['comment_field'] = '';
-    return $defaults;
-}
-
-function add_textarea()
-{
-    echo '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="60" rows="6" placeholder="write your comment here..." aria-required="true"></textarea></p>';
-}
-
-
-
-
-
-
-
-
-function my_code_challenge_post_type()
+// Support us post type for admin panel.
+function support_us_post_type()
 {
 
     $args = array(
         'labels' => array(
-            'name' => 'Code Challenges',
-            'singular_name' => 'Code Challenge',
+            'name' => 'Support-Us',
+            'singular_name' => 'Support',
         ),
         'hierarchical' => true, // Set false to make like a post.
         'public' => true,
         'has_archive' => true,
-        'menu_icon' => 'dashicons-buddicons-activity',
-        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'menu_icon' => 'dashicons-heart',
+        'supports' => array('custom-fields', 'title'),
         //'rewrite' => array('slug' => 'test-url-4-cars'),
         'show_in_rest' => true,
     );
 
-    register_post_type( 'challenges', $args );
+    register_post_type( 'support-us', $args );
 
 }
-add_action( 'init', 'my_code_challenge_post_type' );
-
-
-
+add_action( 'init', 'support_us_post_type' );
 
 
 
